@@ -160,15 +160,69 @@ in n and j.
 **
 
 
+**One can use the data structures described in this chapter to determine
+whether a particular point (a,b) is in a given set by performing a range
+query with range [a : a]×[b : b].
+
+a. Prove that performing such a range query on a kd-tree takes time
+O(logn).
+
+b. What is the time bound for such a query on a range tree? Prove your
+answer.**
 
 
+**In some applications one is interested only in the number of points that
+lie in a range rather than in reporting all of them. Such queries are often
+referred to as range counting queries. In this case one would like to avoid
+having an additive term of O(k) in the query time.
+
+a. Describe how a 1-dimensional range tree can be adapted such that a
+range counting query can be performed in O(logn) time. Prove the
+query time bound.
+
+b. Using the solution to the 1-dimensional problem, describe how ddimensional
+range counting queries can be answered in O(logd n)
+time. Prove the query time**
+
+**Let S1 be a set of n disjoint horizontal line segments and let S2 be a set
+of m disjoint vertical line segments. Give a plane-sweep algorithm that
+counts in O((n+m) log(n+m)) time how many intersections there are
+in S1 /S2.**
 
 
+**Give an example of a set of n line segments with an order on them that
+makes the algorithm create a search structure of size $(n2) and worst-case
+query time $(n).**
+
+**Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
+S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
+
+**Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
+that, given a query point q, it can be tested in time O(log n) whether q lies inside P**
+
+**Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
+Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
 
+**Design a deterministic algorithm, that is, one that does not make random choices, to compute the
+trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
+running time of the algorithm should be O(n log n). **
 
-
-
+**The ray shooting problem occurs in computer graphics (see Chapter 8).
+A 2-dimensional version can be given as follows: Store a set S of n
+non-crossing line segments such that one can quickly answer queries
+of the type: “Given a query ray &—a ray is a half-line starting at some
+point—find the first segment in S intersected by &.” (We leave it to you to
+define the behavior for degenerate cases.)
+In this exercise, we look at vertical ray shooting, where the query ray
+must be a vertical ray pointing upwards. Only the starting point need be
+specified in such a query.
+Give a data structure for the vertical ray shooting problem for a set S of
+n non-crossing line segments in general position. Bound the query time
+and storage requirement of your data structure. What is the preprocessing
+time?
+Can you do the same when the segments are allowed to intersect each
+other?**
 
 
 
