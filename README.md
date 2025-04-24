@@ -123,6 +123,43 @@ running time of your algorithm?**
 
 
 
+**Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
+
+For insertion,start at the root and compare the point's coordinate in the current splitting dimension. If it's less than the node's value, go left; otherwise, go right. 
+Continue this recursively until  finding a null spot where you can add the new node.
+just finding the correct path based on the splitting dimensions and adding the new node as a leaf or internal node where appropriate.
+
+Deletion is trickier.
+
+When the node to delete is a leaf, it's simple—just remove it.
+
+If it's an internal node with one child, we can replace it with that child. But if the node has two children, we need to find a replacement.
+
+Choose the ​minimum point in the current split dimension​ from the ​right subtree​ (or the ​maximum​ from the left subtree).
+Replace the target node’s point​ with the replacement point
+Recursively delete​ the replacement node from its original subtree.
+
+
+**Describe algorithms to insert and detele points from a range tree.In your algorithm you do not need to take care of rebalancing the structure**
+
+
+**Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
+
+a. Suppose that only the nodes with depth 0, 2, 4, 6, . . . have an associated
+structure. Show how the query algorithm can be adapted to answer
+queries correctly.
+
+b. Analyze the storage requirements and query time of such a data structure.
+
+c. Suppose that only the nodes with depth 0, -1j
+logn., -2j
+logn., . . . have
+an associated structure, where j " 2 is a constant. Analyze the storage
+requirements and query time of this data structure. Express the bounds
+in n and j.
+**
+
+
 
 
 
