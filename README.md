@@ -149,6 +149,8 @@ a. Suppose that only the nodes with depth 0, 2, 4, 6, . . . have an associated
 structure. Show how the query algorithm can be adapted to answer
 queries correctly.
 
+
+
 b. Analyze the storage requirements and query time of such a data structure.
 
 c. Suppose that only the nodes with depth 0, -1j
@@ -180,14 +182,24 @@ a. Describe how a 1-dimensional range tree can be adapted such that a
 range counting query can be performed in O(logn) time. Prove the
 query time bound.
 
+each node stores the total number of nodes in its subtree ,if it is a leaf, size=1,if it have left and right children,size=left_children_size+right_children_size+1
+
+Traverse​ the tree to find the split node where paths to a and b diverge.
+​Sum​ sizes of subtrees that fall entirely within [a, b] during traversal.
+​Avoid​ traversing subtrees outside the range.
+Range counting: O(logn) due to subtree size aggregation
+
 b. Using the solution to the 1-dimensional problem, describe how ddimensional
 range counting queries can be answered in O(logd n)
-time. Prove the query time**
+time. Prove the query time 
+**
 
 **Let S1 be a set of n disjoint horizontal line segments and let S2 be a set
 of m disjoint vertical line segments. Give a plane-sweep algorithm that
 counts in O((n+m) log(n+m)) time how many intersections there are
 in S1 /S2.**
+
+
 
 
 **Give an example of a set of n line segments with an order on them that
