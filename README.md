@@ -129,18 +129,13 @@ For insertion,start at the root and compare the point's coordinate in the curren
 Continue this recursively until  finding a null spot where you can add the new node.
 just finding the correct path based on the splitting dimensions and adding the new node as a leaf or internal node where appropriate.
 
-Deletion is trickier.
+Deletion ,the node to delete is a leaf, it's simple—just remove it.
 
-When the node to delete is a leaf, it's simple—just remove it.
-
-If it's an internal node with one child, we can replace it with that child. But if the node has two children, we need to find a replacement.
-
-Choose the ​minimum point in the current split dimension​ from the ​right subtree​ (or the ​maximum​ from the left subtree).
-Replace the target node’s point​ with the replacement point
-Recursively delete​ the replacement node from its original subtree.
 
 
 **Describe algorithms to insert and detele points from a range tree.In your algorithm you do not need to take care of rebalancing the structure**
+
+insert in the main tree,do binary search at every nodes. for all the effected parents,walk back and do binary search on y coordinates.
 
 
 **Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
@@ -149,18 +144,25 @@ a. Suppose that only the nodes with depth 0, 2, 4, 6, . . . have an associated
 structure. Show how the query algorithm can be adapted to answer
 queries correctly.
 
-
+skip 
 
 b. Analyze the storage requirements and query time of such a data structure.
 
-c. Suppose that only the nodes with depth 0, -1j
-logn., -2j
+nlogn/2
+
+squar(logn)
+
+c. Suppose that only the nodes with depth 0, 1/j
+logn., 2/j
 logn., . . . have
-an associated structure, where j " 2 is a constant. Analyze the storage
+an associated structure, where "j "  is a constant. Analyze the storage
 requirements and query time of this data structure. Express the bounds
 in n and j.
 **
 
+storage:j times n
+
+query:2^(1/j logn) squar(logn)
 
 **One can use the data structures described in this chapter to determine
 whether a particular point (a,b) is in a given set by performing a range
@@ -169,9 +171,12 @@ query with range [a : a]×[b : b].
 a. Prove that performing such a range query on a kd-tree takes time
 O(logn).
 
+O(n)=O(1)+O(n/2)
+
 b. What is the time bound for such a query on a range tree? Prove your
 answer.**
 
+O(logn)
 
 **In some applications one is interested only in the number of points that
 lie in a range rather than in reporting all of them. Such queries are often
@@ -182,17 +187,19 @@ a. Describe how a 1-dimensional range tree can be adapted such that a
 range counting query can be performed in O(logn) time. Prove the
 query time bound.
 
-each node stores the total number of nodes in its subtree ,if it is a leaf, size=1,if it have left and right children,size=left_children_size+right_children_size+1
+each internal node stores the total number of nodes in its subtree ,if it is a leaf, size=1,if it have left and right children,size=left_children_size+right_children_size 
 
 Traverse​ the tree to find the split node where paths to a and b diverge.
 ​Sum​ sizes of subtrees that fall entirely within [a, b] during traversal.
 ​Avoid​ traversing subtrees outside the range.
 Range counting: O(logn) due to subtree size aggregation
 
-b. Using the solution to the 1-dimensional problem, describe how ddimensional
-range counting queries can be answered in O(logd n)
+b. Using the solution to the 1-dimensional problem, describe how d dimensional
+range counting queries can be answered in O(log d n)
 time. Prove the query time 
 **
+<img width="879" alt="image" src="https://github.com/user-attachments/assets/44e3c49c-078c-4451-9f5f-d3485924afa6" />
+
 
 **Let S1 be a set of n disjoint horizontal line segments and let S2 be a set
 of m disjoint vertical line segments. Give a plane-sweep algorithm that
@@ -206,11 +213,18 @@ in S1 /S2.**
 makes the algorithm create a search structure of size $(n2) and worst-case
 query time $(n).**
 
+
 **Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
 S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
 
+<img width="854" alt="image" src="https://github.com/user-attachments/assets/16f2a0f4-b378-44cb-ab12-318437f61b8e" />
+
+
+
+
 **Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
 that, given a query point q, it can be tested in time O(log n) whether q lies inside P**
+
 
 **Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
@@ -218,9 +232,9 @@ Can you generalize the solution to the previous exercise to y-monotone polygons?
 
 **Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
-running time of the algorithm should be O(n log n). **
+running time of the algorithm should be O(n log n)**
 
-**The ray shooting problem occurs in computer graphics (see Chapter 8).
+**(6.16)The ray shooting problem occurs in computer graphics (see Chapter 8).
 A 2-dimensional version can be given as follows: Store a set S of n
 non-crossing line segments such that one can quickly answer queries
 of the type: “Given a query ray &—a ray is a half-line starting at some
