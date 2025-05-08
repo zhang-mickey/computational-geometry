@@ -252,6 +252,23 @@ other?**
 
 
 
+**Prove that for any n > 3 there is a set of n point sites in the plane such that one of the cells of
+Vor(P ) has n − 1 vertices.**
+
+
+placing n−1 points equally spaced on a circle around a central point would result in the central Voronoi cell being a regular (n−1)-gon with n−1 vertices
+
+
+**Prove that any algorithm for computing the Voronoi diagram of a set of n point sites in the plane
+needs Ω(n log n) in the worst-case.**
+
+use a reduction from the sorting problem，which is known to have a lower bound of Ω(nlogn) 
+
+
+**Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find two points in P
+that are closest together**
+
+By using a divide and conquer approach with careful merging and strip processing, we can find the closest pair of points in a set P of n points in the plane in O(nlogn) time.
 
 
 
