@@ -264,14 +264,54 @@ needs Ω(n log n) in the worst-case.**
 
 use a reduction from the sorting problem，which is known to have a lower bound of Ω(nlogn) 
 
+or by contra
+
+suppose faster than Ω(n log n)
+
+
+
 
 **Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find two points in P
 that are closest together**
 
 By using a divide and conquer approach with careful merging and strip processing, we can find the closest pair of points in a set P of n points in the plane in O(nlogn) time.
 
+keep the minmum
 
 
 
+**Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find for each point p
+in P another point in P that is closest to it.**
 
+
+**Let the Voronoi diagram of a point set P be stored in a doubly-connected
+edge list inside a bounding box. Give an algorithm to compute all points
+of P that lie on the boundary of the convex hull of P in time linear in the
+output size. Assume that your algorithm receives as its input a pointer to
+the record of some half-edge whose origin lies on the bounding box.**
+
+Each convex hull point's Voronoi cell touches the bounding box exactly once
+
+**Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
+with n(n − 1)/2 vertices and n2 edges**
+
+**Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
+rectangle that contains all the vertices of A(L) in its interior.**
+
+sort the line by slope
+
+<img width="809" alt="image" src="https://github.com/user-attachments/assets/239f3fd5-3362-4d22-8f34-0e88e7ffbb75" />
+
+**Let R be a set of n red points in the plane, and let B be a set of n blue
+points in the plane. We call a line ℓ a separator for R and B if ℓ has
+all points of R to one side and all points of B to the other side. Give a
+randomized algorithm that can decide in O(n) expected time whether R
+and B have a separator.**
+<img width="887" alt="image" src="https://github.com/user-attachments/assets/f2f46103-449b-432f-8baf-9c3ff10ca243" />
+
+**Given a set L of n lines in the plane, give an O(n log n) time algorithm to compute the maximum
+level of any vertex in the arrangement A(L)**
+
+**Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
+the maximum number of points in S**
 
