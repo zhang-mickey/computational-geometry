@@ -315,3 +315,10 @@ level of any vertex in the arrangement A(L)**
 **Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
 the maximum number of points in S**
 
+
+**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
+the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
+simple polygon is star-shaped or not.**
+![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.Use a 2D linear programming feasibility algorithm (e.g., Seidel's) to check if the system of inequalities is solvable.
