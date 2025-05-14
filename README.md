@@ -320,5 +320,21 @@ the maximum number of points in S**
 the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
 simple polygon is star-shaped or not.**
 ![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
 The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
-Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.Use a 2D linear programming feasibility algorithm (e.g., Seidel's) to check if the system of inequalities is solvable.
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+
+
+**On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
+the trains are at positions k1, k2, . . . , kn. Give an O(n log n)-time algorithm that detects all trains that at some moment
+in time are leading. To this end, use the algorithm for computing the intersection of half-planes.**
+
+We model the problem in the (t,x)-plane:
+Each train's position function x=vit+ki defines a line in the plane.
+
+We are interested in the upper envelope of these lines, i.e., the set of all points (t,x) such that x≥v 
+it+ki for all i
+
+Use an efficient algorithm to compute the intersection of these n half-planes in 2D. This results in a convex polygonal region (possibly unbounded). The boundary of this region is the upper envelope of the lines.
+
+Traverse the boundary of the convex region. Each edge of the boundary corresponds to a line from the original set of trains. Collect all such lines.The trains whose lines appear on the boundary are the ones that are leading at some time.
