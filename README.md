@@ -21,6 +21,8 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 
+![image](https://github.com/user-attachments/assets/b8bf258d-4355-46ce-97bd-c79620739cc5)
+
 
 
 
@@ -181,7 +183,7 @@ O(logn)
 **In some applications one is interested only in the number of points that
 lie in a range rather than in reporting all of them. Such queries are often
 referred to as range counting queries. In this case one would like to avoid
-having an additive term of O(k) in the query time.
+having an additive term of O(k) in the query time.**
 
 a. Describe how a 1-dimensional range tree can be adapted such that a
 range counting query can be performed in O(logn) time. Prove the
@@ -314,6 +316,16 @@ level of any vertex in the arrangement A(L)**
 
 **Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
 the maximum number of points in S**
+
+
+
+**The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
+intersected by any line segment interior to P. Give an algorithm that computes a triangulation of a convex polygon
+that has stabbing number O(log n).**
+A convex polygon P with n vertices, ordered v ​
+  in clockwise or counterclockwise order.
+  
+Balanced Triangulation via Divide and Conquer .This ensures a recursion tree of depth O(logn).A line segment can intersect at most one diagonal per level,
 
 
 **A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
