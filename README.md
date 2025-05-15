@@ -16,6 +16,11 @@ closest pair could be one from the left half, one from the right half, or the mi
 by examining points within a **vertical strip** around the dividing line. This strip is checked efficiently by considering only points within a certain y-coordinate range.
 
 
+## triangled
+
+![image](https://github.com/user-attachments/assets/d319e05b-70b2-4c20-8e86-760413ea86fe)
+
+
 
 
 
@@ -317,6 +322,14 @@ level of any vertex in the arrangement A(L)**
 **Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
 the maximum number of points in S**
 
+
+
+
+**Give the pseudo-code of the algorithm to compute a 3-coloring of a triangulated simple polygon.
+The algorithm should run in linear time.**
+![image](https://github.com/user-attachments/assets/25c3fb72-d3e9-4668-9e9d-29a484dfe93f)
+
+![image](https://github.com/user-attachments/assets/35a3e310-916c-4240-bbe0-c73c517603a8)
 
 
 **The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
