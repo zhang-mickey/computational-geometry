@@ -340,6 +340,12 @@ level of any vertex in the arrangement A(L)**
 the maximum number of points in S**
 
 
+**A rectilinear polygon is a simple polygon of which all edges are horizontal or vertical. Let P be a
+rectilinear polygon with n vertices. Give an example to show that ⌊n/4⌋ cameras are sometimes necessary to guard it**
+
+<img width="911" alt="image" src="https://github.com/user-attachments/assets/72a2638e-f7d2-475d-b7c3-6b2feb05fe47" />
+
+
 
 **Let P be a simple polygon in the plane and P(P ) be a triangulation of P . Prove that there exists a
 3-coloring of the vertices of P such that any triangle in P(P ) has vertices of three different colors**
@@ -351,9 +357,22 @@ the maximum number of points in S**
 
 **Give the pseudo-code of the algorithm to compute a 3-coloring of a triangulated simple polygon.
 The algorithm should run in linear time.**
+
 ![image](https://github.com/user-attachments/assets/25c3fb72-d3e9-4668-9e9d-29a484dfe93f)
 
 ![image](https://github.com/user-attachments/assets/35a3e310-916c-4240-bbe0-c73c517603a8)
+
+<img width="739" alt="image" src="https://github.com/user-attachments/assets/3ce58a7c-70e4-4e8a-b13c-6ec7c02924e1" />
+
+
+
+**Let P be a simple polygon with n vertices, which has been partitioned into monotone pieces. Prove
+that the sum of the number of vertices of the pieces is O(n)**
+
+
+**Let S be a set of n points in the plane. Design an efficient algorithm for computing a triangulation
+of P**
+<img width="685" alt="image" src="https://github.com/user-attachments/assets/7dfcc522-c31e-4bcb-9458-3687664aaf00" />
 
 
 **The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
