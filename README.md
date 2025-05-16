@@ -341,6 +341,13 @@ the maximum number of points in S**
 
 
 
+**Let P be a simple polygon in the plane and P(P ) be a triangulation of P . Prove that there exists a
+3-coloring of the vertices of P such that any triangle in P(P ) has vertices of three different colors**
+
+<img width="956" alt="image" src="https://github.com/user-attachments/assets/2a29a965-8c99-4010-bb4b-b25737fc1af8" />
+
+<img width="956" alt="image" src="https://github.com/user-attachments/assets/dd7e2ad6-9b4c-4856-b196-3ae145eb2b0c" />
+
 
 **Give the pseudo-code of the algorithm to compute a 3-coloring of a triangulated simple polygon.
 The algorithm should run in linear time.**
