@@ -378,10 +378,19 @@ of P**
 **The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
 intersected by any line segment interior to P. Give an algorithm that computes a triangulation of a convex polygon
 that has stabbing number O(log n).**
+
 A convex polygon P with n vertices, ordered v ​
   in clockwise or counterclockwise order.
   
 Balanced Triangulation via Divide and Conquer .This ensures a recursion tree of depth O(logn).A line segment can intersect at most one diagonal per level,
+<img width="692" alt="image" src="https://github.com/user-attachments/assets/3cb32c41-f604-452e-976a-cf54aed500b2" />
+
+
+**Let H be a set of at least three half-planes with a non-empty intersection such that not all bounding
+lines are parallel. We call a half-plane h ∈ H redundant if it does not contribute an edge to ∩H. Prove that for any
+redundant half-plane h ∈ H there are two half-planes h′, h′′ ∈ H such that h′ ∩ h′′ ⊂ h. Give an O(n log n) time
+algorithm to compute all redundant half-planes.**
+
 
 
 **A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
@@ -391,6 +400,9 @@ simple polygon is star-shaped or not.**
 
 The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
 Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+
+
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
 
 
 **On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
