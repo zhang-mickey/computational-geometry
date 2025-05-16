@@ -26,10 +26,27 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 
+
 ![image](https://github.com/user-attachments/assets/b8bf258d-4355-46ce-97bd-c79620739cc5)
 
 
 
+## K-d tree
+
+as K-D tree need  presort operator,so kd-tree for a set of n points uses O(n) storage and can be con
+structed
+in O(nlogn) time.
+
+A kd-tree for a set P of n points in the plane uses O(n) storage
+and can be built in O(nlogn) time. A rectangular range query on the kd-tree
+*
+takes O(n+k) time, where k is the number of reported points
+
+## range tree
+
+range tree, which has a better query time, namely O(log2n+k). The
+price we have to pay for this improvement is an increase in storage from
+O(n) for kd-trees to O(nlogn) for range trees.
 
 ### Prove that the intersection of two convex sets in the plane is convex
 pick two arbitrary points
