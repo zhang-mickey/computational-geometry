@@ -173,12 +173,90 @@ line segment of S. Give an O(n log n) time algorithm for this problem that
 uses a rotating half-line with its endpoint at p**
 
 
+# Polygon Triangulation
+
+**3.3 Prove or disprove: The dual graph of the triangulation of a monotone
+polygon is always a chain, that is, any node in this graph has degree at
+most two.**
+![image](https://github.com/user-attachments/assets/bcf19925-2928-48ca-9a59-5f617c849434)
 
 **Let S be a set of n disjoint triangles in the plane, and let P be a set of m points in the plane.
 Design an efficient algorithm to decide, for each point p of P , which triangles from S contains p, if any. What is the
 running time of your algorithm?**
 
 
+**Given a set L of n lines in the plane, give an O(n log n) time algorithm to compute the maximum
+level of any vertex in the arrangement A(L)**
+
+**Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
+the maximum number of points in S**
+
+
+**A rectilinear polygon is a simple polygon of which all edges are horizontal or vertical. Let P be a
+rectilinear polygon with n vertices. Give an example to show that ⌊n/4⌋ cameras are sometimes necessary to guard it**
+
+<img width="911" alt="image" src="https://github.com/user-attachments/assets/72a2638e-f7d2-475d-b7c3-6b2feb05fe47" />
+
+
+
+**Let P be a simple polygon in the plane and P(P ) be a triangulation of P . Prove that there exists a
+3-coloring of the vertices of P such that any triangle in P(P ) has vertices of three different colors**
+
+<img width="956" alt="image" src="https://github.com/user-attachments/assets/2a29a965-8c99-4010-bb4b-b25737fc1af8" />
+
+<img width="956" alt="image" src="https://github.com/user-attachments/assets/dd7e2ad6-9b4c-4856-b196-3ae145eb2b0c" />
+
+
+**Give the pseudo-code of the algorithm to compute a 3-coloring of a triangulated simple polygon.
+The algorithm should run in linear time.**
+
+![image](https://github.com/user-attachments/assets/25c3fb72-d3e9-4668-9e9d-29a484dfe93f)
+
+![image](https://github.com/user-attachments/assets/35a3e310-916c-4240-bbe0-c73c517603a8)
+
+<img width="739" alt="image" src="https://github.com/user-attachments/assets/3ce58a7c-70e4-4e8a-b13c-6ec7c02924e1" />
+
+
+
+**Let P be a simple polygon with n vertices, which has been partitioned into monotone pieces. Prove
+that the sum of the number of vertices of the pieces is O(n)**
+
+
+**Let S be a set of n points in the plane. Design an efficient algorithm for computing a triangulation
+of P**
+<img width="685" alt="image" src="https://github.com/user-attachments/assets/7dfcc522-c31e-4bcb-9458-3687664aaf00" />
+
+
+**The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
+intersected by any line segment interior to P. Give an algorithm that computes a triangulation of a convex polygon
+that has stabbing number O(log n).**
+
+A convex polygon P with n vertices, ordered v ​
+  in clockwise or counterclockwise order.
+  
+Balanced Triangulation via Divide and Conquer .This ensures a recursion tree of depth O(logn).A line segment can intersect at most one diagonal per level,
+<img width="692" alt="image" src="https://github.com/user-attachments/assets/3cb32c41-f604-452e-976a-cf54aed500b2" />
+
+
+**Let H be a set of at least three half-planes with a non-empty intersection such that not all bounding
+lines are parallel. We call a half-plane h ∈ H redundant if it does not contribute an edge to ∩H. Prove that for any
+redundant half-plane h ∈ H there are two half-planes h′, h′′ ∈ H such that h′ ∩ h′′ ⊂ h. Give an O(n log n) time
+algorithm to compute all redundant half-planes.**
+
+
+
+**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
+the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
+simple polygon is star-shaped or not.**
+![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
+The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+
+
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
+
+# KD Tree
 
 
 **Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
@@ -353,6 +431,9 @@ Each convex hull point's Voronoi cell touches the bounding box exactly once
 **Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
 with n(n − 1)/2 vertices and n2 edges**
 
+
+# LP 
+
 **Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
 rectangle that contains all the vertices of A(L) in its interior.**
 
@@ -367,76 +448,6 @@ randomized algorithm that can decide in O(n) expected time whether R
 and B have a separator.**
 <img width="887" alt="image" src="https://github.com/user-attachments/assets/f2f46103-449b-432f-8baf-9c3ff10ca243" />
 
-**Given a set L of n lines in the plane, give an O(n log n) time algorithm to compute the maximum
-level of any vertex in the arrangement A(L)**
-
-**Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
-the maximum number of points in S**
-
-
-**A rectilinear polygon is a simple polygon of which all edges are horizontal or vertical. Let P be a
-rectilinear polygon with n vertices. Give an example to show that ⌊n/4⌋ cameras are sometimes necessary to guard it**
-
-<img width="911" alt="image" src="https://github.com/user-attachments/assets/72a2638e-f7d2-475d-b7c3-6b2feb05fe47" />
-
-
-
-**Let P be a simple polygon in the plane and P(P ) be a triangulation of P . Prove that there exists a
-3-coloring of the vertices of P such that any triangle in P(P ) has vertices of three different colors**
-
-<img width="956" alt="image" src="https://github.com/user-attachments/assets/2a29a965-8c99-4010-bb4b-b25737fc1af8" />
-
-<img width="956" alt="image" src="https://github.com/user-attachments/assets/dd7e2ad6-9b4c-4856-b196-3ae145eb2b0c" />
-
-
-**Give the pseudo-code of the algorithm to compute a 3-coloring of a triangulated simple polygon.
-The algorithm should run in linear time.**
-
-![image](https://github.com/user-attachments/assets/25c3fb72-d3e9-4668-9e9d-29a484dfe93f)
-
-![image](https://github.com/user-attachments/assets/35a3e310-916c-4240-bbe0-c73c517603a8)
-
-<img width="739" alt="image" src="https://github.com/user-attachments/assets/3ce58a7c-70e4-4e8a-b13c-6ec7c02924e1" />
-
-
-
-**Let P be a simple polygon with n vertices, which has been partitioned into monotone pieces. Prove
-that the sum of the number of vertices of the pieces is O(n)**
-
-
-**Let S be a set of n points in the plane. Design an efficient algorithm for computing a triangulation
-of P**
-<img width="685" alt="image" src="https://github.com/user-attachments/assets/7dfcc522-c31e-4bcb-9458-3687664aaf00" />
-
-
-**The stabbing number of a triangulated simple polygon P is the maximum number of diagonals
-intersected by any line segment interior to P. Give an algorithm that computes a triangulation of a convex polygon
-that has stabbing number O(log n).**
-
-A convex polygon P with n vertices, ordered v ​
-  in clockwise or counterclockwise order.
-  
-Balanced Triangulation via Divide and Conquer .This ensures a recursion tree of depth O(logn).A line segment can intersect at most one diagonal per level,
-<img width="692" alt="image" src="https://github.com/user-attachments/assets/3cb32c41-f604-452e-976a-cf54aed500b2" />
-
-
-**Let H be a set of at least three half-planes with a non-empty intersection such that not all bounding
-lines are parallel. We call a half-plane h ∈ H redundant if it does not contribute an edge to ∩H. Prove that for any
-redundant half-plane h ∈ H there are two half-planes h′, h′′ ∈ H such that h′ ∩ h′′ ⊂ h. Give an O(n log n) time
-algorithm to compute all redundant half-planes.**
-
-
-
-**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
-the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
-simple polygon is star-shaped or not.**
-![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
-
-The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
-Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
-
-
-<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
 
 
 **On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
