@@ -1,3 +1,7 @@
+# concept
+A half-plane in the plane:y≤m·x+c or y≥m·x+c
+
+Line segments are assumed to be closed =with endpoints,not open
 # convex hull
 
 **Consider the following alternative approach to computing the convex hull
@@ -17,6 +21,8 @@ reach the left most,then is the upper,change the direction
 **Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points
 in the plane. Do not forget to analyze the running time of your algorithm**
 
+![image](https://github.com/user-attachments/assets/d5d8ec7e-126e-4903-aa6b-dc02acf5f632)
+![image](https://github.com/user-attachments/assets/1a434c88-bdd6-4a9c-95d5-80e73ab94d54)
 
 merge:
 
