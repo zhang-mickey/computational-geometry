@@ -1,5 +1,31 @@
 # convex hull
 
+**Consider the following alternative approach to computing the convex hull
+of a set of points in the plane: We start with the rightmost point. This is
+the first point p1 of the convex hull. Now imagine that we start with a
+vertical line and rotate it clockwise until it hits another point p2. This is
+the second point on the convex hull. We continue rotating the line but this
+time around p2 until we hit a point p3. In this way we continue until we
+reach p1 again.
+a. Give pseudocode for this algorithm.
+b. What degenerate cases can occur and how can we deal with them**
+
+check all the points about the angle with vertical line O(n*h) h is the num of the points
+
+reach the left most,then is the upper,change the direction 
+
+**Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points
+in the plane. Do not forget to analyze the running time of your algorithm**
+
+
+merge:
+
+
+the highest  y for the interaction points with vertical line
+
+![image](https://github.com/user-attachments/assets/d56aa3de-90c0-477e-b5e1-a64655529263)
+
+
 ### Describe an O(nlogn) time method for determining if two sets A and B of n points in the plane can be separated by a line.
 First, note that A and B can be separated by a line if and only if their convex hulls do not overlap. So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.
 
@@ -59,7 +85,7 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 ![image](https://github.com/user-attachments/assets/85bc8f3e-b312-43a9-bf09-ed90708f601f)
 
 
-## line segment interaction
+# line segment interaction
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
 
 **Assume that you are given a set S of n segments, and consider the plane sweep algorithm to compute all intersection points of S.
@@ -108,28 +134,6 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 
-**Consider the following alternative approach to computing the convex hull
-of a set of points in the plane: We start with the rightmost point. This is
-the first point p1 of the convex hull. Now imagine that we start with a
-vertical line and rotate it clockwise until it hits another point p2. This is
-the second point on the convex hull. We continue rotating the line but this
-time around p2 until we hit a point p3. In this way we continue until we
-reach p1 again.
-a. Give pseudocode for this algorithm.
-b. What degenerate cases can occur and how can we deal with them**
-
-check all the points about the angle with vertical line O(n*h) h is the num of the points
-
-reach the left most,then is the upper,change the direction 
-
-**Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points
-in the plane. Do not forget to analyze the running time of your algorithm**
-
-
-merge:
-
-
-the highest  y for the interaction points with vertical line
 
 
 **Let S be a set of n disjoint line segments whose upper endpoints lie on the
