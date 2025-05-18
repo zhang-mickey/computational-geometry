@@ -245,16 +245,6 @@ algorithm to compute all redundant half-planes.**
 
 
 
-**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
-the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
-simple polygon is star-shaped or not.**
-![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
-
-The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
-Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
-
-
-<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
 
 # KD Tree
 
@@ -314,7 +304,7 @@ answer.**
 
 O(logn)
 
-**In some applications one is interested only in the number of points that
+**5.10 In some applications one is interested only in the number of points that
 lie in a range rather than in reporting all of them. Such queries are often
 referred to as range counting queries. In this case one would like to avoid
 having an additive term of O(k) in the query time.**
@@ -337,18 +327,22 @@ time. Prove the query time
 <img width="879" alt="image" src="https://github.com/user-attachments/assets/44e3c49c-078c-4451-9f5f-d3485924afa6" />
 
 
-**Let S1 be a set of n disjoint horizontal line segments and let S2 be a set
+**5.11 Let S1 be a set of n disjoint horizontal line segments and let S2 be a set
 of m disjoint vertical line segments. Give a plane-sweep algorithm that
 counts in O((n+m) log(n+m)) time how many intersections there are
 in S1 /S2.**
 
+![image](https://github.com/user-attachments/assets/8d268526-64a7-4a4d-a1ff-c5bf536f0124)
 
+![image](https://github.com/user-attachments/assets/a55f8d41-7556-4097-9079-1e0f44bc8f86)
+![image](https://github.com/user-attachments/assets/370bbdac-58aa-43e6-9c41-a12e0da37591)
 
 
 **Give an example of a set of n line segments with an order on them that
 makes the algorithm create a search structure of size $(n2) and worst-case
 query time $(n).**
 
+# Point Location
 
 **Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
 S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
@@ -433,6 +427,17 @@ with n(n − 1)/2 vertices and n2 edges**
 
 
 # LP 
+
+**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
+the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
+simple polygon is star-shaped or not.**
+![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
+The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+
+
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
 
 **Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
 rectangle that contains all the vertices of A(L) in its interior.**
