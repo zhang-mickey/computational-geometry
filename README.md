@@ -1,5 +1,32 @@
 # computational-geometry
 
+## convex hull
+Given a set P of points in the plane, let CH(P) denote the convex hull of P. 
+**(a) Assume that the points in P are sorted from left to right. Give an O(n) algorithm to compute CH(P), where you can use any algorithm described in the book without having to describe it in detail. Motivate the time complexity.**
+
+If the points in P are sorted from left to right by x-coordinate, we can compute the convex hull in O(n) time
+Each point is pushed and popped at most once per hull (lower and upper), so the total work is O(n).Since the input is already sorted, we avoid the O(n log n) sorting step.
+**(b) Considering the algorithm you suggested for the above question, what errors may occur, if any, in the presence of rounding errors in the floating point arithmetic? (2p)**
+The convex hull algorithm depends on determining the orientation (left turn, right turn, or colinear) of triplets of points using the cross product:
+If three points are nearly colinear, rounding may cause an incorrect orientation.
+	•	This can lead to:
+	•	Excluding points that should be on the hull.
+	•	Including extra points that shouldn’t be on the hull.
+	•	Incorrect turning decisions (e.g., interpreting a left turn as colinear or right turn).
+![image](https://github.com/user-attachments/assets/85bc8f3e-b312-43a9-bf09-ed90708f601f)
+
+## line segment interaction
+![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
+
+**Assume that you are given a set S of n segments, and consider the plane sweep algorithm to compute all intersection points of S.
+How long does it take, in the worst case, to compute all intersections of S, using any algorithm?**
+
+Since every line segment may cross every other line segment, we have Ω(n2) crossing in the worst case, and thus requiring Ω(n2) time to compute.
+
+![image](https://github.com/user-attachments/assets/159d80fd-23dd-4e43-81bc-adbfc75b59ed)
+
+![image](https://github.com/user-attachments/assets/8a1833e8-f581-4086-84bb-72956d785853)
+
 ## Closest-Pair problem
 closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
 
@@ -15,7 +42,8 @@ closest pair could be one from the left half, one from the right half, or the mi
 
 by examining points within a **vertical strip** around the dividing line. This strip is checked efficiently by considering only points within a certain y-coordinate range.
 
-
+## Every simple polygon has a triangulation
+## Ever ytriangulation of a simple polygonon n⩾4 vertices contains at least two(triangles that are) ears.
 ## triangled
 
 ![image](https://github.com/user-attachments/assets/d319e05b-70b2-4c20-8e86-760413ea86fe)
@@ -114,6 +142,8 @@ partition the horizontal strip [−∞ : ∞] × [0 : 1] into n + 1 regions. Giv
 O(n log n) time algorithm to build a binary search tree on the segmentsin S such that the region containing a query point can be determined in
 O(log n) time. Also describe the query algorithm in detail.**
 
+
+![image](https://github.com/user-attachments/assets/d30c0a22-0bb3-4980-ac0e-c5adc4525e15)
 
 
 **The intersection detection problem for a set S of n line segments is to
