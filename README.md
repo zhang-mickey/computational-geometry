@@ -1,11 +1,54 @@
-# computational-geometry
+# convex hull
 
-## convex hull
+### Describe an O(nlogn) time method for determining if two sets A and B of n points in the plane can be separated by a line.
+First, note that A and B can be separated by a line if and only if their convex hulls do not overlap. So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.
+
+So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.Then we compute all of the line segment intersections for the two convex hulls. If we nd a single intersection, we stop. This also takes O(nlogn) time. (See Chapter 2.) Therefore, our complete algorithm takes O(nlogn) time. 
+
+**Let E be an unsorted set of n segments that are the edges of a convex polygon. Describe an
+O(n log n)-time algorithm that computes from E a list containing all vertices of the polygon, sorted in clockwise
+order**
+
+
+find the leftmost and rightmost points O(n)+O(n)
+
+above the line ,the upper 
+
+sort the upper part by x ,sort the opposite by reverer order
+
+### 1.6（a）Let S be a set of n line segments in the plane. Prove that the convex hull of S is exactly the same as the convex hull of the 2n endpoints of the segments**
+![image](https://github.com/user-attachments/assets/c5c538fa-c912-41bb-869b-2d772e9c7732)
+
+
+### Prove that the intersection of two convex sets in the plane is convex
+pick two arbitrary points
+
+both belongs to A and B
+
+line segment is a subset of A and B 
+
+then line segment belongs to the intersection
+
+### Prove that the smallest-perimeter polygon P containing a set P of points in the plane is convex.
+
+by contradiction
+
+Suppose there exists a non-convex polygon Q with the smallest possible perimeter that contains all points in P.
+
+Since Q is non-convex, it has at least one reflex vertex B (where the internal angle is greater than 180 
+∘). Let A, B, and C be three consecutive vertices of Q, with B as the reflex vertex.
+ 
+triangle inequality,replace the two edges by a smaller edge than shape a convex.
+
+![image](https://github.com/user-attachments/assets/bf03ce99-0029-414e-993b-b9f1595fe76b)
+
+
 Given a set P of points in the plane, let CH(P) denote the convex hull of P. 
 **(a) Assume that the points in P are sorted from left to right. Give an O(n) algorithm to compute CH(P), where you can use any algorithm described in the book without having to describe it in detail. Motivate the time complexity.**
 
 If the points in P are sorted from left to right by x-coordinate, we can compute the convex hull in O(n) time
 Each point is pushed and popped at most once per hull (lower and upper), so the total work is O(n).Since the input is already sorted, we avoid the O(n log n) sorting step.
+
 **(b) Considering the algorithm you suggested for the above question, what errors may occur, if any, in the presence of rounding errors in the floating point arithmetic? (2p)**
 The convex hull algorithm depends on determining the orientation (left turn, right turn, or colinear) of triplets of points using the cross product:
 If three points are nearly colinear, rounding may cause an incorrect orientation.
@@ -14,6 +57,7 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 	•	Including extra points that shouldn’t be on the hull.
 	•	Incorrect turning decisions (e.g., interpreting a left turn as colinear or right turn).
 ![image](https://github.com/user-attachments/assets/85bc8f3e-b312-43a9-bf09-ed90708f601f)
+
 
 ## line segment interaction
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
@@ -59,56 +103,8 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 
-## K-d tree
-
-as K-D tree need  presort operator,so kd-tree for a set of n points uses O(n) storage and can be con
-structed
-in O(nlogn) time.
-
-A kd-tree for a set P of n points in the plane uses O(n) storage
-and can be built in O(nlogn) time. A rectangular range query on the kd-tree
-*
-takes O(n+k) time, where k is the number of reported points
-
-## range tree
-
-range tree, which has a better query time, namely O(log2n+k). The
-price we have to pay for this improvement is an increase in storage from
-O(n) for kd-trees to O(nlogn) for range trees.
-
-### Prove that the intersection of two convex sets in the plane is convex
-pick two arbitrary points
-
-both belongs to A and B
-
-line segment is a subset of A and B 
-
-then line segment belongs to the intersection
-
-### Prove that the smallest-perimeter polygon P containing a set P of points in the plane is convex.
-
-by contradiction
-
-Suppose there exists a non-convex polygon Q with the smallest possible perimeter that contains all points in P.
-
-Since Q is non-convex, it has at least one reflex vertex B (where the internal angle is greater than 180 
-∘). Let A, B, and C be three consecutive vertices of Q, with B as the reflex vertex.
- 
-triangle inequality,replace the two edges by a smaller edge than shape a convex.
-
-**Let E be an unsorted set of n segments that are the edges of a convex polygon. Describe an
-O(n log n)-time algorithm that computes from E a list containing all vertices of the polygon, sorted in clockwise
-order**
 
 
-find the leftmost and rightmost points O(n)+O(n)
-
-above the line ,the upper 
-
-sort the upper part by x ,sort the opposite by reverer order
-
-**Let S be a set of n line segments in the plane. Prove that the convex hull of S is exactly the same as
-the convex hull of the 2n endpoints of the segments**
 
 
 
@@ -248,6 +244,23 @@ algorithm to compute all redundant half-planes.**
 
 # KD Tree
 
+## K-d tree
+
+as K-D tree need  presort operator,so kd-tree for a set of n points uses O(n) storage and can be con
+structed
+in O(nlogn) time.
+
+A kd-tree for a set P of n points in the plane uses O(n) storage
+and can be built in O(nlogn) time. A rectangular range query on the kd-tree
+*
+takes O(n+k) time, where k is the number of reported points
+
+## range tree
+
+range tree, which has a better query time, namely O(log2n+k). The
+price we have to pay for this improvement is an increase in storage from
+O(n) for kd-trees to O(nlogn) for range trees.
+
 
 **Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
 
@@ -344,7 +357,7 @@ query time $(n).**
 
 # Point Location
 
-**Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
+**6.4 Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
 S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
 
 <img width="854" alt="image" src="https://github.com/user-attachments/assets/16f2a0f4-b378-44cb-ab12-318437f61b8e" />
@@ -352,15 +365,15 @@ S containing q can be computed in time O(n). Assume that S is given in a doubly-
 
 
 
-**Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
+**6.5 Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
 that, given a query point q, it can be tested in time O(log n) whether q lies inside P**
 
 
-**Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
+**6.6Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
 
-**Design a deterministic algorithm, that is, one that does not make random choices, to compute the
+**6.8Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
 running time of the algorithm should be O(n log n)**
 
@@ -379,8 +392,11 @@ and storage requirement of your data structure. What is the preprocessing
 time?
 Can you do the same when the segments are allowed to intersect each
 other?**
+![image](https://github.com/user-attachments/assets/b47ae2fa-4800-45c1-9203-a9ba29877e50)
 
+![image](https://github.com/user-attachments/assets/4c1dedc8-4dae-44f8-8d45-f2fc3dcc0c7d)
 
+![image](https://github.com/user-attachments/assets/0e8b334c-266d-4d1d-9bdd-854886c94389)
 
 **Prove that for any n > 3 there is a set of n point sites in the plane such that one of the cells of
 Vor(P ) has n − 1 vertices.**
