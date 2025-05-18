@@ -23,6 +23,7 @@ in the plane. Do not forget to analyze the running time of your algorithm**
 
 ![image](https://github.com/user-attachments/assets/d5d8ec7e-126e-4903-aa6b-dc02acf5f632)
 ![image](https://github.com/user-attachments/assets/1a434c88-bdd6-4a9c-95d5-80e73ab94d54)
+![image](https://github.com/user-attachments/assets/b6d33600-e8fc-4376-878e-ea22f596be5f)
 
 merge:
 
