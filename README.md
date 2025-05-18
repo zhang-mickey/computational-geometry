@@ -151,7 +151,11 @@ determine whether there exists a pair of segments in S that intersect. Give
 a plane sweep algorithm that solves the intersection detection problem in
 O(n log n) time.**
 
+determine whether any two intersect (not find all intersections).
 
+We run the plane sweep algorithm given in the text for line segment intersection, but we stop if we discover an intersection. 
+This takes O(nlogn) time, because in the worst case we will have to process the events for the endpoints of each edge, each of which takes O(logn) time.
+![image](https://github.com/user-attachments/assets/eee1b5b4-0c1b-4189-bb97-773f592c25df)
 
 
 **Let S be a set of n circles in the plane. Describe a plane sweep algorithm
