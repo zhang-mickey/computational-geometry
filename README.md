@@ -415,6 +415,25 @@ Vor(P ) has n − 1 vertices.**
 
 placing n−1 points equally spaced on a circle around a central point would result in the central Voronoi cell being a regular (n−1)-gon with n−1 vertices
 
+# Voronoi Diagrams
+![image](https://github.com/user-attachments/assets/9862dcf3-b1cf-4930-8252-561bd6833e4b)
+
+## Voronoi Diagrams Properties 
+Each Voronoi region V(pi) is convex. Could be  bounded or unbounded.
+
+A Voronoi vertex has at least three nearest  neighbors 
+## Computing the Voronoi Diagram
+plane sweep algorithm O(nlogn)
+
+the problem of sorting n real numbers
+is reducible to the problem of computing Voronoi diagrams, so any algorithm for computing Voronoi diagrams must take
+"(nlogn) time in the worst case
+
+**What is the complexity of the Voronoi diagram of any set P of n points in the plane, using O notation, assuming
+no four points of P lie on a same circle?**
+O(n)
+**Given a set P of n points in the plane, what is the maximum number of edges in P s Voronoi diagram?**
+3n-6
 
 **Prove that any algorithm for computing the Voronoi diagram of a set of n point sites in the plane
 needs Ω(n log n) in the worst-case.**
@@ -453,7 +472,7 @@ Each convex hull point's Voronoi cell touches the bounding box exactly once
 with n(n − 1)/2 vertices and n2 edges**
 
 
-# LP 
+# Arrangements and Duality
 
 **A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
 the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
