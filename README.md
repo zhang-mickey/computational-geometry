@@ -4,6 +4,10 @@ A half-plane in the plane:y≤m·x+c or y≥m·x+c
 Line segments are assumed to be closed =with endpoints,not open
 # convex hull
 
+## compute leftmost upmost... inO(nlogn)
+![image](https://github.com/user-attachments/assets/452efdbd-e35d-4c04-abc4-3173abbc17b1)
+
+
 **Consider the following alternative approach to computing the convex hull
 of a set of points in the plane: We start with the rightmost point. This is
 the first point p1 of the convex hull. Now imagine that we start with a
@@ -288,13 +292,15 @@ Deletion ,the node to delete is a leaf, it's simple—just remove it.
 insert in the main tree,do binary search at every nodes. for all the effected parents,walk back and do binary search on y coordinates.
 
 
-**Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
+### Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
 
 a. Suppose that only the nodes with depth 0, 2, 4, 6, . . . have an associated
 structure. Show how the query algorithm can be adapted to answer
 queries correctly.
 
-skip 
+When visiting a node with an associated structure (depth even), use it to get all points in the desired y-range.
+
+When visiting a node without associated structure (depth odd), recursively visit both children to simulate the missing structure.
 
 b. Analyze the storage requirements and query time of such a data structure.
 
@@ -307,14 +313,15 @@ logn., 2/j
 logn., . . . have
 an associated structure, where "j "  is a constant. Analyze the storage
 requirements and query time of this data structure. Express the bounds
-in n and j.
-**
+in n and j**
 
 storage:j times n
 
 query:2^(1/j logn) squar(logn)
 
-**One can use the data structures described in this chapter to determine
+![image](https://github.com/user-attachments/assets/8fa8decd-82cb-4330-9b5c-378c12658ca6)
+
+### One can use the data structures described in this chapter to determine
 whether a particular point (a,b) is in a given set by performing a range
 query with range [a : a]×[b : b].
 
@@ -324,7 +331,7 @@ O(logn).
 O(n)=O(1)+O(n/2)
 
 b. What is the time bound for such a query on a range tree? Prove your
-answer.**
+answer.
 
 O(logn)
 
@@ -366,7 +373,7 @@ in S1 /S2.**
 makes the algorithm create a search structure of size $(n2) and worst-case
 query time $(n).**
 
-# Point Location
+# Point Location trapezoidal map
 
 **6.4 Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
 S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
@@ -409,11 +416,32 @@ other?**
 
 ![image](https://github.com/user-attachments/assets/0e8b334c-266d-4d1d-9bdd-854886c94389)
 
-**Prove that for any n > 3 there is a set of n point sites in the plane such that one of the cells of
-Vor(P ) has n − 1 vertices.**
+**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
+the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
+simple polygon is star-shaped or not.**
+![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
+The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
 
 
-placing n−1 points equally spaced on a circle around a central point would result in the central Voronoi cell being a regular (n−1)-gon with n−1 vertices
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
+
+
+**On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
+the trains are at positions k1, k2, . . . , kn. Give an O(n log n)-time algorithm that detects all trains that at some moment
+in time are leading. To this end, use the algorithm for computing the intersection of half-planes.**
+
+We model the problem in the (t,x)-plane:
+Each train's position function x=vit+ki defines a line in the plane.
+
+We are interested in the upper envelope of these lines, i.e., the set of all points (t,x) such that x≥v 
+it+ki for all i
+
+Use an efficient algorithm to compute the intersection of these n half-planes in 2D. This results in a convex polygonal region (possibly unbounded). The boundary of this region is the upper envelope of the lines.
+
+Traverse the boundary of the convex region. Each edge of the boundary corresponds to a line from the original set of trains. Collect all such lines.The trains whose lines appear on the boundary are the ones that are leading at some time.
+
 
 # Voronoi Diagrams
 ![image](https://github.com/user-attachments/assets/9862dcf3-b1cf-4930-8252-561bd6833e4b)
@@ -432,10 +460,17 @@ is reducible to the problem of computing Voronoi diagrams, so any algorithm for 
 **What is the complexity of the Voronoi diagram of any set P of n points in the plane, using O notation, assuming
 no four points of P lie on a same circle?**
 O(n)
+
 **Given a set P of n points in the plane, what is the maximum number of edges in P s Voronoi diagram?**
 3n-6
 
-**Prove that any algorithm for computing the Voronoi diagram of a set of n point sites in the plane
+**7.1Prove that for any n > 3 there is a set of n point sites in the plane such that one of the cells of
+Vor(P ) has n − 1 vertices.**
+
+
+placing n−1 points equally spaced on a circle around a central point would result in the central Voronoi cell being a regular (n−1)-gon with n−1 vertices
+
+**7.3Prove that any algorithm for computing the Voronoi diagram of a set of n point sites in the plane
 needs Ω(n log n) in the worst-case.**
 
 use a reduction from the sorting problem，which is known to have a lower bound of Ω(nlogn) 
@@ -447,20 +482,24 @@ suppose faster than Ω(n log n)
 
 
 
-**Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find two points in P
+**7.10Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find two points in P
 that are closest together**
-
-By using a divide and conquer approach with careful merging and strip processing, we can find the closest pair of points in a set P of n points in the plane in O(nlogn) time.
 
 keep the minmum
 
+![image](https://github.com/user-attachments/assets/47e89ed7-44da-4219-8994-7c937c0681cd)
 
 
-**Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find for each point p
+
+**7.11Let P be a set of n points in the plane. Give an O(n log n) time algorithm to find for each point p
 in P another point in P that is closest to it.**
+The Voronoi diagram for n points can be built in O(n \log n) time.
+
+The total number of Voronoi neighbor checks across all n points is bounded by the number of Voronoi edges, which is O(n).
+![image](https://github.com/user-attachments/assets/8b55958b-6c8e-43f3-bf33-7bb9192eb2a2)
 
 
-**Let the Voronoi diagram of a point set P be stored in a doubly-connected
+**7.13Let the Voronoi diagram of a point set P be stored in a doubly-connected
 edge list inside a bounding box. Give an algorithm to compute all points
 of P that lie on the boundary of the convex hull of P in time linear in the
 output size. Assume that your algorithm receives as its input a pointer to
@@ -468,31 +507,31 @@ the record of some half-edge whose origin lies on the bounding box.**
 
 Each convex hull point's Voronoi cell touches the bounding box exactly once
 
-**Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
-with n(n − 1)/2 vertices and n2 edges**
 
 
 # Arrangements and Duality
+k-level = Parts of the lines/curves with exactly k other lines above.
 
-**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
-the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
-simple polygon is star-shaped or not.**
-![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
-
-The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
-Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+0-level = Upper envelope
 
 
-<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
+![image](https://github.com/user-attachments/assets/d80b1d73-cc5a-42d6-bc93-044052dbbed1)
 
-**Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
+
+**8.3Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
+with n(n − 1)/2 vertices and n2 edges.**
+
+
+
+
+**8.4Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
 rectangle that contains all the vertices of A(L) in its interior.**
 
 sort the line by slope
 
 <img width="809" alt="image" src="https://github.com/user-attachments/assets/239f3fd5-3362-4d22-8f34-0e88e7ffbb75" />
 
-**Let R be a set of n red points in the plane, and let B be a set of n blue
+**8.7Let R be a set of n red points in the plane, and let B be a set of n blue
 points in the plane. We call a line ℓ a separator for R and B if ℓ has
 all points of R to one side and all points of B to the other side. Give a
 randomized algorithm that can decide in O(n) expected time whether R
@@ -501,16 +540,43 @@ and B have a separator.**
 
 
 
-**On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
-the trains are at positions k1, k2, . . . , kn. Give an O(n log n)-time algorithm that detects all trains that at some moment
-in time are leading. To this end, use the algorithm for computing the intersection of half-planes.**
 
-We model the problem in the (t,x)-plane:
-Each train's position function x=vit+ki defines a line in the plane.
 
-We are interested in the upper envelope of these lines, i.e., the set of all points (t,x) such that x≥v 
-it+ki for all i
+**8.13Given a set L of n lines in the plane, give an O(n log n) time algorithm to compute the maximum
+level of any vertex in the arrangement A(L)**
 
-Use an efficient algorithm to compute the intersection of these n half-planes in 2D. This results in a convex polygonal region (possibly unbounded). The boundary of this region is the upper envelope of the lines.
+Sort lines by slope.O(n \log n)
 
-Traverse the boundary of the convex region. Each edge of the boundary corresponds to a line from the original set of trains. Collect all such lines.The trains whose lines appear on the boundary are the ones that are leading at some time.
+Compute the upper envelope of the lines.
+
+**8.14 Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
+the maximum number of points in S**
+
+by using dual properties :	Find a point where the maximum number of dual lines intersect.
+
+There are O(n^2) pairs of lines.
+	•	For each pair, checking how many other lines go through the same point costs O(n).
+	•	Naively, this would be O(n^3), but we optimize:
+
+Instead:
+	•	Store intersection points and counts in a hash map.
+	•	Each of the O(n^2) pairs produces a point — insert into the map and increment its count.
+
+
+
+**8.15 Let S be a set of n segments in the plane. We want to preprocess S into a
+data structure that can answer the following query: Given a query line !,
+how many segments in S does it intersect?
+a. Formulate the problem in the dual plane.
+b. Describe a data structure for this problem that uses O(n2) expected
+storage and has O(logn) expected query time.
+c. Describe how the data structure can be built in O(n2 logn) expected
+time.**
+
+(a) Each segment in the primal corresponds to a strip (region) in the dual
+
+(b)
+
+(c)
+
+
