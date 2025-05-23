@@ -5,6 +5,9 @@ Line segments are assumed to be closed =with endpoints,not open
 
 ## Closest-Pair problem
 closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
+Describe a plane sweep algorithm to find the closes pair of a set of n points in 2D space in O(nlogn) time. 
+![image](https://github.com/user-attachments/assets/cb5c1737-2576-4dbb-b31b-8d0034a8fc27)
+
 
 ### divide and conquer approach
 
@@ -122,11 +125,19 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 ![image](https://github.com/user-attachments/assets/85bc8f3e-b312-43a9-bf09-ed90708f601f)
 
 
-# line segment interaction
+# Line segment interaction
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
 
 
 ![image](https://github.com/user-attachments/assets/10fa7ae2-fffc-463b-b6d2-fe2ac0cc238c)
+
+## Doubly connected edge list（DCEL）: common edge-based representation
+
+![image](https://github.com/user-attachments/assets/d129430d-35ac-49e8-9494-279aa6c7984a)
+
+
+#### Twin(Prev(Twin(e))) ≠ Next(e) 
+
 
 
 **（2.1）Let S be a set of n disjoint line segments whose upper endpoints lie on the
@@ -280,9 +291,9 @@ redundant half-plane h ∈ H there are two half-planes h′, h′′ ∈ H such 
 algorithm to compute all redundant half-planes.**
 
 
+# LP
 
-
-# KD Tree
+# 5 KD Tree
 
 ## K-d tree
 
@@ -398,7 +409,19 @@ in S1 /S2.**
 makes the algorithm create a search structure of size $(n2) and worst-case
 query time $(n).**
 
-# Point Location trapezoidal map
+# 6 Point Location 
+
+## trapezoidal map
+more general method of defining a subdivision of the plane into simple regions
+![image](https://github.com/user-attachments/assets/4bc7518c-f858-4ad0-b4d0-e99f93474b29)
+
+![image](https://github.com/user-attachments/assets/f80f43ba-412b-4a01-a665-619e0802fc65)
+
+### construction ： randomized incremental algorithm
+
+We could construct the trapezoidal map easily by plane sweep.
+![image](https://github.com/user-attachments/assets/0784fab8-37de-4a99-9434-640a086dc082)
+
 
 **6.4 Show that, given a planar subdivision S with n vertices and edges and a query point q, the face of
 S containing q can be computed in time O(n). Assume that S is given in a doubly-connected edge list.**
@@ -408,15 +431,15 @@ S containing q can be computed in time O(n). Assume that S is given in a doubly-
 
 
 
-**6.5 Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
+**（6.5） Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
 that, given a query point q, it can be tested in time O(log n) whether q lies inside P**
 
 
-**6.6Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
+**（6.6）Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
 
-**6.8Design a deterministic algorithm, that is, one that does not make random choices, to compute the
+**（6.8）Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
 running time of the algorithm should be O(n log n)**
 
@@ -441,10 +464,15 @@ other?**
 
 ![image](https://github.com/user-attachments/assets/0e8b334c-266d-4d1d-9bdd-854886c94389)
 
+
+
+
+
 **A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
 the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
 simple polygon is star-shaped or not.**
 ![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
 
 The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
 Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
@@ -603,5 +631,10 @@ time.**
 (b)
 
 (c)
+
+
+# Reference
+https://www.cs.cmu.edu/afs/cs/academic/class/15456-f15/Handouts/cmsc754-lects.pdf
+
 
 
