@@ -2,25 +2,30 @@
 A half-plane in the plane:y≤m·x+c or y≥m·x+c
 
 Line segments are assumed to be closed =with endpoints,not open
+
+## Closest-Pair problem
+closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
+
+### divide and conquer approach
+
+1.Sort the points by their x-coordinates.
+
+2.Divide the sorted list into two halves.
+
+3.Recursively find the closest pair in each half.
+
+4.Combine the results by checking for pairs that cross the two halves
+
+by examining points within a **vertical strip** around the dividing line. This strip is checked efficiently by considering only points within a certain y-coordinate range.
+
+
+
 # convex hull
 
 ## compute leftmost upmost... inO(nlogn)
 ![image](https://github.com/user-attachments/assets/452efdbd-e35d-4c04-abc4-3173abbc17b1)
 
 
-**Consider the following alternative approach to computing the convex hull
-of a set of points in the plane: We start with the rightmost point. This is
-the first point p1 of the convex hull. Now imagine that we start with a
-vertical line and rotate it clockwise until it hits another point p2. This is
-the second point on the convex hull. We continue rotating the line but this
-time around p2 until we hit a point p3. In this way we continue until we
-reach p1 again.
-a. Give pseudocode for this algorithm.
-b. What degenerate cases can occur and how can we deal with them**
-
-check all the points about the angle with vertical line O(n*h) h is the num of the points
-
-reach the left most,then is the upper,change the direction 
 
 
 ### Describe an O(nlogn) time method for determining if two sets A and B of n points in the plane can be separated by a line.
@@ -69,7 +74,22 @@ sort the upper part by x ,sort the opposite by reverer order
 ### 1.6（a）Let S be a set of n line segments in the plane. Prove that the convex hull of S is exactly the same as the convex hull of the 2n endpoints of the segments
 ![image](https://github.com/user-attachments/assets/c5c538fa-c912-41bb-869b-2d772e9c7732)
 
-### 1.8Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points in the plane. Do not forget to analyze the running time of your algorithm
+**1.7Consider the following alternative approach to computing the convex hull
+of a set of points in the plane: We start with the rightmost point. This is
+the first point p1 of the convex hull. Now imagine that we start with a
+vertical line and rotate it clockwise until it hits another point p2. This is
+the second point on the convex hull. We continue rotating the line but this
+time around p2 until we hit a point p3. In this way we continue until we
+reach p1 again.
+a. Give pseudocode for this algorithm.
+b. What degenerate cases can occur and how can we deal with them**
+
+check all the points about the angle with vertical line O(n*h) h is the num of the points
+
+reach the left most,then is the upper,change the direction 
+
+
+### 1.8 Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points in the plane. Do not forget to analyze the running time of your algorithm
 
 ![image](https://github.com/user-attachments/assets/d5d8ec7e-126e-4903-aa6b-dc02acf5f632)
 ![image](https://github.com/user-attachments/assets/1a434c88-bdd6-4a9c-95d5-80e73ab94d54)
@@ -105,6 +125,45 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 # line segment interaction
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
 
+
+**（2.1）Let S be a set of n disjoint line segments whose upper endpoints lie on the
+line y= 1 and whose lower endpoints lie on the line y= 0. These segments
+partition the horizontal strip [−∞ : ∞] × [0 : 1] into n + 1 regions. Give an
+O(n log n) time algorithm to build a binary search tree on the segmentsin S such that the region containing a query point can be determined in
+O(log n) time. Also describe the query algorithm in detail.**
+
+
+![image](https://github.com/user-attachments/assets/d30c0a22-0bb3-4980-ac0e-c5adc4525e15)
+
+**（2.2）The intersection detection problem for a set S of n line segments is to
+determine whether there exists a pair of segments in S that intersect. Give
+a plane sweep algorithm that solves the intersection detection problem in
+O(n log n) time.**
+
+determine whether any two intersect (not find all intersections).
+
+We run the plane sweep algorithm given in the text for line segment intersection, but we stop if we discover an intersection. 
+This takes O(nlogn) time, because in the worst case we will have to process the events for the endpoints of each edge, each of which takes O(logn) time.
+![image](https://github.com/user-attachments/assets/eee1b5b4-0c1b-4189-bb97-773f592c25df)
+
+
+
+**（2.11）Let S be a set of n circles in the plane. Describe a plane sweep algorithm
+to compute all intersection points between the circles. (Because we dealwith circles, not discs, two circles do not intersect if one lies entirely
+inside the other.) Your algorithm should run in O((n + k) log n) time,
+where k is the number of intersection points.**
+
+We can break each circle into 2 semicircles with a vertical line crossing their centers. Instead of line segments, we can perform the sweep line w algorithm on the 2n semicircles. The only difference is that in e have to distinguish the “intersection” of two semicircles from a common circle, and that the tersection between circles can be twice.
+
+**（2.14）Let S be a set of n disjoint line segments in the plane, and let p be a
+point not on any of the line segments of S. We wish to determine all
+line segments of S that p can see, that is, all line segments of S that
+contain some point q so that the open segment pq doesn’t intersect any
+line segment of S. Give an O(n log n) time algorithm for this problem that
+uses a rotating half-line with its endpoint at p**
+
+This is still similar to plane sweep algorithm. But instead of line sweep vertically or horiz now set p as the origin, sort the polar angles of the endpoints to p, and sweep counterclockwise. The status queue is built according to how far the intersect segments are to the origin. ontally, we Each time after update of an event, if a segment in the status queue becomes the “top” one, w e will mark it as “visible”. The segments, if never “emerging” at the top of status queue from entering the queue until leaving, will not be counted. In this way, we detect all the visible segments from p.
+
 **Assume that you are given a set S of n segments, and consider the plane sweep algorithm to compute all intersection points of S.
 How long does it take, in the worst case, to compute all intersections of S, using any algorithm?**
 
@@ -114,21 +173,18 @@ Since every line segment may cross every other line segment, we have Ω(n2) cro
 
 ![image](https://github.com/user-attachments/assets/8a1833e8-f581-4086-84bb-72956d785853)
 
-## Closest-Pair problem
-closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
 
-### divide and conquer approach
 
-1.Sort the points by their x-coordinates.
 
-2.Divide the sorted list into two halves.
 
-3.Recursively find the closest pair in each half.
 
-4.Combine the results by checking for pairs that cross the two halves
 
-by examining points within a **vertical strip** around the dividing line. This strip is checked efficiently by considering only points within a certain y-coordinate range.
 
+
+
+
+
+# Polygon Triangulation
 ## Every simple polygon has a triangulation
 ## Ever ytriangulation of a simple polygonon n⩾4 vertices contains at least two(triangles that are) ears.
 ## triangled
@@ -146,51 +202,6 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 
-
-
-
-
-
-
-
-**Let S be a set of n disjoint line segments whose upper endpoints lie on the
-line y= 1 and whose lower endpoints lie on the line y= 0. These segments
-partition the horizontal strip [−∞ : ∞] × [0 : 1] into n + 1 regions. Give an
-O(n log n) time algorithm to build a binary search tree on the segmentsin S such that the region containing a query point can be determined in
-O(log n) time. Also describe the query algorithm in detail.**
-
-
-![image](https://github.com/user-attachments/assets/d30c0a22-0bb3-4980-ac0e-c5adc4525e15)
-
-
-**The intersection detection problem for a set S of n line segments is to
-determine whether there exists a pair of segments in S that intersect. Give
-a plane sweep algorithm that solves the intersection detection problem in
-O(n log n) time.**
-
-determine whether any two intersect (not find all intersections).
-
-We run the plane sweep algorithm given in the text for line segment intersection, but we stop if we discover an intersection. 
-This takes O(nlogn) time, because in the worst case we will have to process the events for the endpoints of each edge, each of which takes O(logn) time.
-![image](https://github.com/user-attachments/assets/eee1b5b4-0c1b-4189-bb97-773f592c25df)
-
-
-**Let S be a set of n circles in the plane. Describe a plane sweep algorithm
-to compute all intersection points between the circles. (Because we dealwith circles, not discs, two circles do not intersect if one lies entirely
-inside the other.) Your algorithm should run in O((n + k) log n) time,
-where k is the number of intersection points.**
-
-
-
-**Let S be a set of n disjoint line segments in the plane, and let p be a
-point not on any of the line segments of S. We wish to determine all
-line segments of S that p can see, that is, all line segments of S that
-contain some point q so that the open segment pq doesn’t intersect any
-line segment of S. Give an O(n log n) time algorithm for this problem that
-uses a rotating half-line with its endpoint at p**
-
-
-# Polygon Triangulation
 
 **3.3 Prove or disprove: The dual graph of the triangulation of a monotone
 polygon is always a chain, that is, any node in this graph has degree at
