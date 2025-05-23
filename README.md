@@ -22,8 +22,54 @@ check all the points about the angle with vertical line O(n*h) h is the num of t
 
 reach the left most,then is the upper,change the direction 
 
-**Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points
-in the plane. Do not forget to analyze the running time of your algorithm**
+
+### Describe an O(nlogn) time method for determining if two sets A and B of n points in the plane can be separated by a line.
+First, note that A and B can be separated by a line if and only if their convex hulls do not overlap. So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.
+
+So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.Then we compute all of the line segment intersections for the two convex hulls. If we nd a single intersection, we stop. This also takes O(nlogn) time. (See Chapter 2.) Therefore, our complete algorithm takes O(nlogn) time. 
+
+
+### 1.1(a) Prove that the intersection of two convex sets in the plane is convex
+pick two arbitrary points
+
+both belongs to A and B
+
+line segment is a subset of A and B 
+
+then line segment belongs to the intersection
+
+### 1.1(b) Prove that the smallest-perimeter polygon P containing a set P of points in the plane is convex.
+
+by contradiction
+
+Suppose there exists a non-convex polygon Q with the smallest possible perimeter that contains all points in P.
+
+Since Q is non-convex, it has at least one reflex vertex B (where the internal angle is greater than 180 
+∘). Let A, B, and C be three consecutive vertices of Q, with B as the reflex vertex.
+ 
+triangle inequality,replace the two edges by a smaller edge than shape a convex.
+
+![image](https://github.com/user-attachments/assets/bf03ce99-0029-414e-993b-b9f1595fe76b)
+
+
+**1.3 Let E be an unsorted set of n segments that are the edges of a convex polygon. Describe an
+O(n log n)-time algorithm that computes from E a list containing all vertices of the polygon, sorted in clockwise
+order**
+
+
+find the leftmost and rightmost points O(n)+O(n)
+
+above the line ,the upper 
+
+sort the upper part by x ,sort the opposite by reverer order
+![image](https://github.com/user-attachments/assets/5487c40b-aef1-4479-8700-5032520d7d3d)
+![image](https://github.com/user-attachments/assets/85b6c219-e883-45c4-beba-66c507d3c275)
+
+
+### 1.6（a）Let S be a set of n line segments in the plane. Prove that the convex hull of S is exactly the same as the convex hull of the 2n endpoints of the segments
+![image](https://github.com/user-attachments/assets/c5c538fa-c912-41bb-869b-2d772e9c7732)
+
+### 1.8Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points in the plane. Do not forget to analyze the running time of your algorithm
 
 ![image](https://github.com/user-attachments/assets/d5d8ec7e-126e-4903-aa6b-dc02acf5f632)
 ![image](https://github.com/user-attachments/assets/1a434c88-bdd6-4a9c-95d5-80e73ab94d54)
@@ -37,47 +83,6 @@ the highest  y for the interaction points with vertical line
 ![image](https://github.com/user-attachments/assets/d56aa3de-90c0-477e-b5e1-a64655529263)
 
 
-### Describe an O(nlogn) time method for determining if two sets A and B of n points in the plane can be separated by a line.
-First, note that A and B can be separated by a line if and only if their convex hulls do not overlap. So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.
-
-So our method will rst compute the convex hulls of A and B. This takes O(nlogn) time.Then we compute all of the line segment intersections for the two convex hulls. If we nd a single intersection, we stop. This also takes O(nlogn) time. (See Chapter 2.) Therefore, our complete algorithm takes O(nlogn) time. 
-
-**Let E be an unsorted set of n segments that are the edges of a convex polygon. Describe an
-O(n log n)-time algorithm that computes from E a list containing all vertices of the polygon, sorted in clockwise
-order**
-
-
-find the leftmost and rightmost points O(n)+O(n)
-
-above the line ,the upper 
-
-sort the upper part by x ,sort the opposite by reverer order
-
-### 1.6（a）Let S be a set of n line segments in the plane. Prove that the convex hull of S is exactly the same as the convex hull of the 2n endpoints of the segments**
-![image](https://github.com/user-attachments/assets/c5c538fa-c912-41bb-869b-2d772e9c7732)
-
-
-### Prove that the intersection of two convex sets in the plane is convex
-pick two arbitrary points
-
-both belongs to A and B
-
-line segment is a subset of A and B 
-
-then line segment belongs to the intersection
-
-### Prove that the smallest-perimeter polygon P containing a set P of points in the plane is convex.
-
-by contradiction
-
-Suppose there exists a non-convex polygon Q with the smallest possible perimeter that contains all points in P.
-
-Since Q is non-convex, it has at least one reflex vertex B (where the internal angle is greater than 180 
-∘). Let A, B, and C be three consecutive vertices of Q, with B as the reflex vertex.
- 
-triangle inequality,replace the two edges by a smaller edge than shape a convex.
-
-![image](https://github.com/user-attachments/assets/bf03ce99-0029-414e-993b-b9f1595fe76b)
 
 
 Given a set P of points in the plane, let CH(P) denote the convex hull of P. 
@@ -93,6 +98,7 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 	•	Excluding points that should be on the hull.
 	•	Including extra points that shouldn’t be on the hull.
 	•	Incorrect turning decisions (e.g., interpreting a left turn as colinear or right turn).
+ 
 ![image](https://github.com/user-attachments/assets/85bc8f3e-b312-43a9-bf09-ed90708f601f)
 
 
