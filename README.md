@@ -126,6 +126,9 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
 
 
+![image](https://github.com/user-attachments/assets/10fa7ae2-fffc-463b-b6d2-fe2ac0cc238c)
+
+
 **（2.1）Let S be a set of n disjoint line segments whose upper endpoints lie on the
 line y= 1 and whose lower endpoints lie on the line y= 0. These segments
 partition the horizontal strip [−∞ : ∞] × [0 : 1] into n + 1 regions. Give an
