@@ -152,8 +152,11 @@ This takes O(nlogn) time, because in the worst case we will have to process the 
 to compute all intersection points between the circles. (Because we dealwith circles, not discs, two circles do not intersect if one lies entirely
 inside the other.) Your algorithm should run in O((n + k) log n) time,
 where k is the number of intersection points.**
+![image](https://github.com/user-attachments/assets/34f3f218-3e29-402b-a0d0-b82db70e23f9)
+![image](https://github.com/user-attachments/assets/607b47d7-533c-40b3-9eeb-f7eb4cd99ab1)
+![image](https://github.com/user-attachments/assets/1142a111-625a-4726-afa9-f074fddd885e)
 
-We can break each circle into 2 semicircles with a vertical line crossing their centers. Instead of line segments, we can perform the sweep line w algorithm on the 2n semicircles. The only difference is that in e have to distinguish the “intersection” of two semicircles from a common circle, and that the tersection between circles can be twice.
+We can break each circle into 2 semicircles with a vertical line crossing their centers. Instead of line segments, we can perform the sweep line algorithm on the 2n semicircles. The only difference is that we have to distinguish the “intersection” of two semicircles from a common circle, and that the itersection between circles can be twice.
 
 **（2.14）Let S be a set of n disjoint line segments in the plane, and let p be a
 point not on any of the line segments of S. We wish to determine all
@@ -163,6 +166,8 @@ line segment of S. Give an O(n log n) time algorithm for this problem that
 uses a rotating half-line with its endpoint at p**
 
 This is still similar to plane sweep algorithm. But instead of line sweep vertically or horiz now set p as the origin, sort the polar angles of the endpoints to p, and sweep counterclockwise. The status queue is built according to how far the intersect segments are to the origin. ontally, we Each time after update of an event, if a segment in the status queue becomes the “top” one, w e will mark it as “visible”. The segments, if never “emerging” at the top of status queue from entering the queue until leaving, will not be counted. In this way, we detect all the visible segments from p.
+
+2.11 and 2.14 two problems can be solved via a modification of the plane-sweep approach. If you are doing this, you should describe the sweep-line status (or its equivalent), the event points, the data structures used for maintaining these, and the actions taken at each type of event point. You should also outline how the desired running time bound follows.
 
 **Assume that you are given a set S of n segments, and consider the plane sweep algorithm to compute all intersection points of S.
 How long does it take, in the worst case, to compute all intersections of S, using any algorithm?**
