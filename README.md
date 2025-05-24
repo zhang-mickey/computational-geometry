@@ -293,6 +293,35 @@ algorithm to compute all redundant half-planes.**
 
 # LP
 
+**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
+the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
+simple polygon is star-shaped or not.**
+![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
+
+
+The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
+Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
+
+
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
+
+
+**On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
+the trains are at positions k1, k2, . . . , kn. Give an O(n log n)-time algorithm that detects all trains that at some moment
+in time are leading. To this end, use the algorithm for computing the intersection of half-planes.**
+
+We model the problem in the (t,x)-plane:
+Each train's position function x=vit+ki defines a line in the plane.
+
+We are interested in the upper envelope of these lines, i.e., the set of all points (t,x) such that x≥v 
+it+ki for all i
+
+Use an efficient algorithm to compute the intersection of these n half-planes in 2D. This results in a convex polygonal region (possibly unbounded). The boundary of this region is the upper envelope of the lines.
+
+Traverse the boundary of the convex region. Each edge of the boundary corresponds to a line from the original set of trains. Collect all such lines.The trains whose lines appear on the boundary are the ones that are leading at some time.
+
+
+
 # 5 KD Tree
 
 ## K-d tree
@@ -433,8 +462,15 @@ S containing q can be computed in time O(n). Assume that S is given in a doubly-
 
 **（6.5） Given a convex polygon P as an array of its n vertices in sorted order along the boundary. Show
 that, given a query point q, it can be tested in time O(log n) whether q lies inside P**
+For a convex polygon, if you fix one vertex (e.g. P[0]), the polygon can be split into n - 2 non-overlapping triangles
+If you can find the triangle that might contain the query point q, and test if it lies within that triangle, you can determine if q is inside the polygon.
 
-
+Choose a fixed anchor vertex: Let’s take P[0].
+	2.	Binary Search between vertices P[1] to P[n-1] to find the triangle \triangle(P[0], P[i], P[i+1]) such that q lies within the wedge formed by P[0]P[i] and P[0]P[i+1].
+Use the orientation test (cross product) to determine:
+	•	If q lies to the left or right of the vector from P[0] to P[i].
+	3.	Once the correct triangle is found in O(\log n), test if q lies inside the triangle \triangle(P[0], P[i], P[i+1]) using three orientation tests.
+ 
 **（6.6）Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
@@ -442,6 +478,9 @@ Can you generalize the solution to the previous exercise to y-monotone polygons?
 **（6.8）Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
 running time of the algorithm should be O(n log n)**
+
+![image](https://github.com/user-attachments/assets/263b4007-44d2-450f-955e-a6cb72ab9e5e)
+
 
 **(6.16)The ray shooting problem occurs in computer graphics (see Chapter 8).
 A 2-dimensional version can be given as follows: Store a set S of n
@@ -468,35 +507,10 @@ other?**
 
 
 
-**A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
-the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
-simple polygon is star-shaped or not.**
-![image](https://github.com/user-attachments/assets/f37c3ce1-be79-4c00-96bf-d81a9495ba77)
-
-
-The idea is to model the constraints imposed by the polygon's edges as a system of linear inequalities。
-Without loss of generality, we assume that the simple polygon P is represented by a counter clockwise chain of its vertices (numbering n) in array form. Given such a chain, it is straightforward to compute the lines representing each edge. Further, these lines can be converted into half-spaces facing the inside of P using orientation primitives.There are n such inequalities (one per edge), forming a system of linear constraints.  **Using a randomized linear programming algorithm**, we achieve the required expected linear time complexity .
-
-
-<img width="795" alt="image" src="https://github.com/user-attachments/assets/8f47b645-31b1-4f8e-b806-d5edea206ad8" />
-
-
-**On n parallel railway tracks n trains are going with constant speeds v1, v2, . . . , vn . At time t = 0,
-the trains are at positions k1, k2, . . . , kn. Give an O(n log n)-time algorithm that detects all trains that at some moment
-in time are leading. To this end, use the algorithm for computing the intersection of half-planes.**
-
-We model the problem in the (t,x)-plane:
-Each train's position function x=vit+ki defines a line in the plane.
-
-We are interested in the upper envelope of these lines, i.e., the set of all points (t,x) such that x≥v 
-it+ki for all i
-
-Use an efficient algorithm to compute the intersection of these n half-planes in 2D. This results in a convex polygonal region (possibly unbounded). The boundary of this region is the upper envelope of the lines.
-
-Traverse the boundary of the convex region. Each edge of the boundary corresponds to a line from the original set of trains. Collect all such lines.The trains whose lines appear on the boundary are the ones that are leading at some time.
-
 
 # Voronoi Diagrams
+A Voronoi diagram encodes proximity information, that is, what is close to what.
+
 ![image](https://github.com/user-attachments/assets/9862dcf3-b1cf-4930-8252-561bd6833e4b)
 
 ## Voronoi Diagrams Properties 
@@ -552,11 +566,23 @@ The total number of Voronoi neighbor checks across all n points is bounded by th
 ![image](https://github.com/user-attachments/assets/8b55958b-6c8e-43f3-bf33-7bb9192eb2a2)
 
 
-**7.13Let the Voronoi diagram of a point set P be stored in a doubly-connected
+**（7.13）Let the Voronoi diagram of a point set P be stored in a doubly-connected
 edge list inside a bounding box. Give an algorithm to compute all points
 of P that lie on the boundary of the convex hull of P in time linear in the
 output size. Assume that your algorithm receives as its input a pointer to
 the record of some half-edge whose origin lies on the bounding box.**
+
+Acellof theVoronoidiagramisunboundedifandonlyif thecorresponding site lies on the convex hull. (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
+
+Start at a half-edge e on the bounding box.
+
+Traverse the outer face by following next pointers until returning to e.
+
+For each edge h in this cycle:
+Get the site p from h’s incident face.
+Add p to the result list if not already present.
+
+The outer face (bounding box) forms a single cycle in the DCEL. Traversing this cycle ensures all unbounded Voronoi edges (and thus convex hull points) are visited 
 
 Each convex hull point's Voronoi cell touches the bounding box exactly once
 
