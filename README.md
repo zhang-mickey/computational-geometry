@@ -3,6 +3,11 @@ A half-plane in the plane:y≤m·x+c or y≥m·x+c
 
 Line segments are assumed to be closed =with endpoints,not open
 
+
+**non-crossing**
+![image](https://github.com/user-attachments/assets/fe2d893a-728e-42b0-8fef-6093470db8c8)
+
+
 ## Closest-Pair problem
 closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
 Describe a plane sweep algorithm to find the closes pair of a set of n points in 2D space in O(nlogn) time. 
@@ -322,7 +327,7 @@ Traverse the boundary of the convex region. Each edge of the boundary correspond
 
 
 
-# 5 KD Tree
+# 5 Range search
 
 ## K-d tree
 
@@ -342,7 +347,7 @@ price we have to pay for this improvement is an increase in storage from
 O(n) for kd-trees to O(nlogn) for range trees.
 
 
-**Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
+**5.2 Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
 
 For insertion,start at the root and compare the point's coordinate in the current splitting dimension. If it's less than the node's value, go left; otherwise, go right. 
 Continue this recursively until  finding a null spot where you can add the new node.
@@ -352,12 +357,12 @@ Deletion ,the node to delete is a leaf, it's simple—just remove it.
 
 
 
-**Describe algorithms to insert and detele points from a range tree.In your algorithm you do not need to take care of rebalancing the structure**
+**5.6 Describe algorithms to insert and detele points from a range tree.In your algorithm you do not need to take care of rebalancing the structure**
 
 insert in the main tree,do binary search at every nodes. for all the effected parents,walk back and do binary search on y coordinates.
 
 
-### Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
+### (5.8)Theorem 5.8 showed that a range tree on a set of n points in the plane requires O(nlogn) storage. One could bring down the storage requirements by storing associated structures only with a subset of the nodes in the main tree.
 
 a. Suppose that only the nodes with depth 0, 2, 4, 6, . . . have an associated
 structure. Show how the query algorithm can be adapted to answer
@@ -386,9 +391,7 @@ query:2^(1/j logn) squar(logn)
 
 ![image](https://github.com/user-attachments/assets/8fa8decd-82cb-4330-9b5c-378c12658ca6)
 
-### One can use the data structures described in this chapter to determine
-whether a particular point (a,b) is in a given set by performing a range
-query with range [a : a]×[b : b].
+### 5.9 One can use the data structures described in this chapter to determinewhether a particular point (a,b) is in a given set by performing a range query with range [a : a]×[b : b].
 
 a. Prove that performing such a range query on a kd-tree takes time
 O(logn).
@@ -434,9 +437,10 @@ in S1 /S2.**
 ![image](https://github.com/user-attachments/assets/370bbdac-58aa-43e6-9c41-a12e0da37591)
 
 
-**Give an example of a set of n line segments with an order on them that
-makes the algorithm create a search structure of size $(n2) and worst-case
-query time $(n).**
+
+
+
+
 
 # 6 Point Location 
 
@@ -504,8 +508,9 @@ other?**
 ![image](https://github.com/user-attachments/assets/0e8b334c-266d-4d1d-9bdd-854886c94389)
 
 
+## Give an example of a set of n line segments and the order on them that makes the randomized trapezoidal algorithm create a search structure of size Θ(n2) and having query time Θ(n), in the worst case.
 
-
+![image](https://github.com/user-attachments/assets/fdb6c7a1-2438-487e-8355-348c9254b4ec)
 
 
 # Voronoi Diagrams
