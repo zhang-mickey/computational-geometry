@@ -3,7 +3,10 @@ A half-plane in the plane:y≤m·x+c or y≥m·x+c
 
 Line segments are assumed to be closed =with endpoints,not open
 
+O(n log n) Upper Bound
 
+Ω(n log n) Lower Bound
+ 
 **non-crossing**
 ![image](https://github.com/user-attachments/assets/fe2d893a-728e-42b0-8fef-6093470db8c8)
 
@@ -29,6 +32,20 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 # convex hull
+### O(n³) without exploiting convex hull properties.
+![image](https://github.com/user-attachments/assets/3ea5e31a-089e-4caf-987c-07c7e81fce8d)
+
+### divide and conquer 
+![image](https://github.com/user-attachments/assets/98b75f7f-6c43-4fb1-8893-53992db0e363)
+
+### Graham’s Scan:incremental construction
+![image](https://github.com/user-attachments/assets/53c96b2c-8f63-404a-83f0-9e9904469215)
+
+### Any algorithm for computing the convex hull of n points in the plane needs Ω(nlogn) time in the worst case.
+The convex hull of points on a parabola y=x2 encodes the sorted order of their x-coordinates. Any algorithm that computes this convex hull must implicitly perform a sorting-like operation, which cannot be done faster than Ω(nlogn) time.
+
+
+### Rotating Calipers
 
 ## compute leftmost upmost... inO(nlogn)
 ![image](https://github.com/user-attachments/assets/452efdbd-e35d-4c04-abc4-3173abbc17b1)
@@ -131,6 +148,11 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 
 
 # Line segment interaction
+
+## plane sweep :Only test segments when their y-projections overlap
+![image](https://github.com/user-attachments/assets/55de44fd-9977-4020-8659-5fe7a9c8ce46)
+
+## 
 ![image](https://github.com/user-attachments/assets/326f0ff8-2dd2-4acb-8eab-41f31d8fda0d)
 
 
