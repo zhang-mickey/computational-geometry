@@ -1,3 +1,38 @@
+# test sample
+Stating only the running time is su cient, no need to explain your answers in detail. 
+
+(a) Given a set of n line segments in the plane, testing if they are all pairwise disjoint. 
+
+**O(nlog n) time**
+
+(b) Let S be a set of n horizontal line segments in R2, and let T be an interval tree on S in which at every node stores its segments in a range tree with fractional cascading. Querying T to report all segments in S intersected by a vertical (query) line segment. 
+
+**O(log2n + k) time**
+
+(c) Triangulating an x-monotone polygon with n vertices. 
+**O(n) time.**
+
+(d) Given the Voronoi diagram of a set P of n points in R2, computing the convex hull of P.
+**O(n) time.**
+
+(e)Computing the convex hull of an x-monotone polygonal chain with n vertices.
+
+O(n) time,
+since the chain is already sorted on x-coordinate. (so no need to sort again in the graham scan algorithm.)
+
+(f)Querying a KD-tree on n points in R3 to report all points in an axis-aligned query box [x1 x2] [y1 y2] [z1 z3].
+kd-tree, O(n2/3 + k).
+![image](https://github.com/user-attachments/assets/05866ca4-0535-4c8a-a751-35a3e530c2f7)
+
+
+(g) Inserting a new line into an arrangement of n lines (in R2).
+
+**O(n) time** by the zone Theorem
+
+
+
+
+
 # concept
 A half-plane in the plane:y≤m·x+c or y≥m·x+c
 
@@ -658,7 +693,7 @@ of P that lie on the boundary of the convex hull of P in time linear in the
 output size. Assume that your algorithm receives as its input a pointer to
 the record of some half-edge whose origin lies on the bounding box.**
 
-Acellof theVoronoidiagramisunboundedifandonlyif thecorresponding site lies on the convex hull. (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
+Acellof the Voronoi diagram is unbounded if and only if the corresponding site lies on the convex hull. (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
 
 Start at a half-edge e on the bounding box.
 
