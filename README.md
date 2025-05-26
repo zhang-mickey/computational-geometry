@@ -10,6 +10,9 @@ O(n log n) Upper Bound
 **non-crossing**
 ![image](https://github.com/user-attachments/assets/fe2d893a-728e-42b0-8fef-6093470db8c8)
 
+## Euler’s Formula 
+![image](https://github.com/user-attachments/assets/21bc7e14-1509-4c1a-b922-fc144c8b6e78)
+
 ## Useful Data Structures All these data structures use O(n) space to store n objects.
 
 ### Priority Queues
@@ -184,7 +187,9 @@ If three points are nearly colinear, rounding may cause an incorrect orientation
 
 #### Twin(Prev(Twin(e))) ≠ Next(e) 
 
-
+### Computing the Overlay of Two Subdivisions
+![image](https://github.com/user-attachments/assets/0f22c94c-58d0-4a16-8101-3676788d458e)
+![image](https://github.com/user-attachments/assets/01fa51e6-beba-4851-b994-687125ac9b8d)
 
 **（2.1）Let S be a set of n disjoint line segments whose upper endpoints lie on the
 line y= 1 and whose lower endpoints lie on the line y= 0. These segments
