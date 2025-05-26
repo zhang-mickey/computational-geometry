@@ -10,6 +10,17 @@ O(n log n) Upper Bound
 **non-crossing**
 ![image](https://github.com/user-attachments/assets/fe2d893a-728e-42b0-8fef-6093470db8c8)
 
+## Useful Data Structures All these data structures use O(n) space to store n objects.
+
+### Priority Queues
+(bybinary heaps) Insert, delete, extract-min, union, decrease-key, increasekey in O(logn) time. Find-min in O(1) time each. Make-heap from n keys in O(n) time
+
+## Incremental Approach
+
+
+### Orientation Testing
+For any constant dimension d, given any ordered (d + 1)-tuple of points in Rd, it can be determined in O(1) time whether these points are (a) negatively oriented (clockwise), (b) positively oriented (counterclockwise) or (c) affinely dependent (collinear). This test can be applied for many other geometric predicates, such as determining whether two given line segments in the plane intersect, whether a given point lies within a given triangle, and whether a given point lies within the circumcircle of three other given points.
+
 
 ## Closest-Pair problem
 closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
@@ -32,6 +43,8 @@ by examining points within a **vertical strip** around the dividing line. This s
 
 
 # convex hull
+
+## ordered nature of convex polygons.
 ### O(n³) without exploiting convex hull properties.
 ![image](https://github.com/user-attachments/assets/3ea5e31a-089e-4caf-987c-07c7e81fce8d)
 
@@ -130,7 +143,13 @@ the highest  y for the interaction points with vertical line
 
 
 
-Given a set P of points in the plane, let CH(P) denote the convex hull of P. 
+### whether a query point lies inside, on, or outside of Convex Hull:
+
+![image](https://github.com/user-attachments/assets/a28a05de-88d7-4a8f-ace3-ed9d7997d566)
+
+
+
+### Given a set P of points in the plane, let CH(P) denote the convex hull of P. 
 **(a) Assume that the points in P are sorted from left to right. Give an O(n) algorithm to compute CH(P), where you can use any algorithm described in the book without having to describe it in detail. Motivate the time complexity.**
 
 If the points in P are sorted from left to right by x-coordinate, we can compute the convex hull in O(n) time
@@ -232,6 +251,8 @@ Since every line segment may cross every other line segment, we have Ω(n2) cro
 
 # Polygon Triangulation
 ## Every simple polygon has a triangulation
+Every simple polygon admits a triangulation, and any triangulation of a simple polygon with** n vertices **consists of exactly **n-2 **triangles.
+
 ## Ever ytriangulation of a simple polygonon n⩾4 vertices contains at least two(triangles that are) ears.
 ## triangled
 
@@ -318,7 +339,18 @@ redundant half-plane h ∈ H there are two half-planes h′, h′′ ∈ H such 
 algorithm to compute all redundant half-planes.**
 
 
-# LP
+# LP INTERSECTION OF HALF-PLANES
+
+## divide and conquer
+
+## incremental approach
+Sorting by slope takes O(n log n) time 
+### backward Analysis
+a central assumption is that the final structure being built is independent of the order in which elements are inserted 
+
+### In our backward analysis of randomized incremental algorithms, we were careful to argue that the structure being analyzed does not depend on the order of insertion. What aspect of the analysis would fail if the structure did depend on the order of insertion?
+
+The probabilities used to compute expected values  become invalid, as they no longer reflect the actual behavior of the algorithm.
 
 **A simple polygon P is called star-shaped if it contains a point q such that for any point p in P
 the line segment pq is contained in P. Give an algorithm whose expected running time is linear to decide whether a
@@ -623,6 +655,10 @@ k-level = Parts of the lines/curves with exactly k other lines above.
 
 ![image](https://github.com/user-attachments/assets/d80b1d73-cc5a-42d6-bc93-044052dbbed1)
 
+## discrepancy
+![image](https://github.com/user-attachments/assets/d78e0aef-1674-49db-8c63-4450819a67db)
+![image](https://github.com/user-attachments/assets/8c3356f5-8be2-4973-9929-36e987f62cde)
+
 
 **8.3Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
 with n(n − 1)/2 vertices and n2 edges.**
@@ -671,7 +707,7 @@ Instead:
 
 
 **8.15 Let S be a set of n segments in the plane. We want to preprocess S into a
-data structure that can answer the following query: Given a query line !,
+data structure that can answer the following query: Given a query line l,
 how many segments in S does it intersect?
 a. Formulate the problem in the dual plane.
 b. Describe a data structure for this problem that uses O(n2) expected
@@ -680,6 +716,8 @@ c. Describe how the data structure can be built in O(n2 logn) expected
 time.**
 
 (a) Each segment in the primal corresponds to a strip (region) in the dual
+![image](https://github.com/user-attachments/assets/abd70750-1f6d-46e9-acfa-7f2123b74cb3)
+![image](https://github.com/user-attachments/assets/73a66888-cb1d-4bcd-82f9-21c39e055708)
 
 (b)
 
