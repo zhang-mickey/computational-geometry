@@ -250,24 +250,46 @@ Since every line segment may cross every other line segment, we have Ω(n2) cro
 
 
 # Polygon Triangulation
+
+## A Convex Polygon is easy to Triangulate
+![image](https://github.com/user-attachments/assets/bb35a5b7-1ce7-4537-889a-74574420fe56)
+
 ## Every simple polygon has a triangulation
 Every simple polygon admits a triangulation, and any triangulation of a simple polygon with** n vertices **consists of exactly **n-2 **triangles.
 
+## For every triangulated polgon there is a 3-coloring
+There is a simple O(n2) time algorithm based on the this.
 ## Ever ytriangulation of a simple polygonon n⩾4 vertices contains at least two(triangles that are) ears.
 ## triangled
 
 ![image](https://github.com/user-attachments/assets/d319e05b-70b2-4c20-8e86-760413ea86fe)
 
 
-
-
-
-
-
-
 ![image](https://github.com/user-attachments/assets/b8bf258d-4355-46ce-97bd-c79620739cc5)
+![image](https://github.com/user-attachments/assets/5ee1f672-a8be-4d2a-bf51-0ebf06c95173)
 
+### Valid Diagonal
+![image](https://github.com/user-attachments/assets/f6481cd5-194b-4db4-b617-4c2c6955d49b)
 
+### monotone polygon
+
+![image](https://github.com/user-attachments/assets/6f49ce46-a9d5-4583-b114-f42c13dc8566)
+![image](https://github.com/user-attachments/assets/46702f17-0931-424c-b1b6-d769d19ce142)
+
+####  A polygon is y-monotone if it has no split vertices or merge vertices.
+#### Vertex Types
+Split Vertex :local maximum
+
+Merge Vertex:a local minimum
+![image](https://github.com/user-attachments/assets/63520927-fe98-4936-8dfe-fcd9bc2471a5)
+
+#### how to remove split and merge?
+![image](https://github.com/user-attachments/assets/63f1e99c-a6ec-4e4c-af53-5f537f71ab08)
+![image](https://github.com/user-attachments/assets/0056a394-10e9-401b-bfad-e225428cc491)
+
+#### Triangulating a Monotone Polygon
+Can we always just draw a zig zag down the middle of a monotone polygon? ● Unfortunately no, 
+![image](https://github.com/user-attachments/assets/c8f91c29-c73b-4248-8169-94865d026239)
 
 
 **3.3 Prove or disprove: The dual graph of the triangulation of a monotone
