@@ -830,9 +830,15 @@ and B have a separator.**
 **8.13Given a set L of n lines in the plane, give an O(n log n) time algorithm to compute the maximum
 level of any vertex in the arrangement A(L)**
 
+Find the maximum level among all O(n2) vertices in A(L), but in O(nlogn) time.
+
+It can be solved in quadratic time by constructing the full arrangement, and then by tracing the vertices along each line from left to right, keeping track of the level of each vertex as we go. The challenge is of course to solve it faster.
+
 Sort lines by slope.O(n \log n)
 
 Compute the upper envelope of the lines.
+
+by sweeping over the upper envelope, we efficiently examine a subset of O(n) vertices that are good candidates for the maximum level
 
 **8.14 Let S be a set of n points in the plane. Give an O(n2) time algorithm to find the line containing
 the maximum number of points in S**
