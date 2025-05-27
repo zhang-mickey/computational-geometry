@@ -1,5 +1,4 @@
 # test sample
-Stating only the running time is su cient, no need to explain your answers in detail. 
 
 (a) Given a set of n line segments in the plane, testing if they are all pairwise disjoint. 
 
@@ -17,11 +16,11 @@ Stating only the running time is su cient, no need to explain your answers in de
 
 (e)Computing the convex hull of an x-monotone polygonal chain with n vertices.
 
-O(n) time,
+**O(n) time**,
 since the chain is already sorted on x-coordinate. (so no need to sort again in the graham scan algorithm.)
 
 (f)Querying a KD-tree on n points in R3 to report all points in an axis-aligned query box [x1 x2] [y1 y2] [z1 z3].
-kd-tree, O(n2/3 + k).
+kd-tree,** O(n2/3 + k)**.
 ![image](https://github.com/user-attachments/assets/05866ca4-0535-4c8a-a751-35a3e530c2f7)
 
 
@@ -29,7 +28,22 @@ kd-tree, O(n2/3 + k).
 
 **O(n) time** by the zone Theorem
 
+(h) Given a set P of n points in R3, constructing a range tree on P.
 
+(1) Computing the arrangement of a set of n lines in R2.
+
+(2)any set of n points in the plane can be triangulated in O(n log n) time?
+
+**True**
+
+(3)What is the complexity of the Voronoi diagram of any set P of n points in the plane, using O notation, assuming
+no four points of P lie on a same circle?
+
+
+![image](https://github.com/user-attachments/assets/6eaa01f4-96d8-4d0d-a5b9-32264f3e5c7a)
+(a)The zone of a line ℓ in an arrangement A of lines (or line segments) is the set of faces (regions) in A that ℓ intersects.
+
+(b)The zone theorem states that the number of faces in the zone of a line in an arrangement of n lines is O(n).When inserting a new line into an arrangement, the zone theorem ensures that only O(n) faces need to be updated, enabling efficient incremental construction.
 
 
 
@@ -60,7 +74,7 @@ O(n log n) Upper Bound
 For any constant dimension d, given any ordered (d + 1)-tuple of points in Rd, it can be determined in O(1) time whether these points are (a) negatively oriented (clockwise), (b) positively oriented (counterclockwise) or (c) affinely dependent (collinear). This test can be applied for many other geometric predicates, such as determining whether two given line segments in the plane intersect, whether a given point lies within a given triangle, and whether a given point lies within the circumcircle of three other given points.
 
 
-## Closest-Pair problem
+## Closest-Pair problem  ：Applications - Collision Detection & Air Traffic Control
 closest pair could be one from the left half, one from the right half, or the minimum of the two closest pairs from each half
 Describe a plane sweep algorithm to find the closes pair of a set of n points in 2D space in O(nlogn) time. 
 ![image](https://github.com/user-attachments/assets/cb5c1737-2576-4dbb-b31b-8d0034a8fc27)
@@ -462,6 +476,12 @@ range tree, which has a better query time, namely O(log2n+k). The
 price we have to pay for this improvement is an increase in storage from
 O(n) for kd-trees to O(nlogn) for range trees.
 
+**Let S be a set of n axis-parallel rectangles in the plane. Describe an efficient data structure for storing
+S so that, given a query horizontal line segment q1q2, it can be used to quickly report all rectangles in S that completely
+cross q1q2. (See example below.) What are the query time and the space requirement of your data structure?**
+![image](https://github.com/user-attachments/assets/f0c6f505-1f2a-416b-a538-fc4f66cbd70a)
+![image](https://github.com/user-attachments/assets/5600607d-b9a2-48ba-a94a-151cc1bcb3e2)
+
 
 **5.2 Describe algorithms to insert and detele points from a kd-tree.In your algorithm you do not need to take care of rebalancing the structure**
 
@@ -693,7 +713,7 @@ of P that lie on the boundary of the convex hull of P in time linear in the
 output size. Assume that your algorithm receives as its input a pointer to
 the record of some half-edge whose origin lies on the bounding box.**
 
-Acellof the Voronoi diagram is unbounded if and only if the corresponding site lies on the convex hull. (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
+**A cell of the Voronoi diagram is unbounded if and only if the corresponding site lies on the convex hull.** (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
 
 Start at a half-edge e on the bounding box.
 
@@ -710,6 +730,17 @@ Each convex hull point's Voronoi cell touches the bounding box exactly once
 
 
 # Arrangements and Duality
+
+## complexity of  Arrangement 
+![image](https://github.com/user-attachments/assets/bb378528-b6c6-4fe1-ac83-89d84c7f24ab)
+
+
+### use Line Segment Intersection
+![image](https://github.com/user-attachments/assets/49d0041d-0b03-46a6-b9da-315ff0f1b327)
+![image](https://github.com/user-attachments/assets/f1fe8811-530c-4dd5-a49f-bade5fe01e69)
+
+
+## max level
 k-level = Parts of the lines/curves with exactly k other lines above.
 
 0-level = Upper envelope
