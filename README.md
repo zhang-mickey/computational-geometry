@@ -592,7 +592,30 @@ in S1 /S2.**
 
 # 6 Point Location 
 
+## Is Query Point inside a specific Triangle?
+![image](https://github.com/user-attachments/assets/4abaab76-4b21-4fa4-bf5a-45461198a8d8)
+![image](https://github.com/user-attachments/assets/1b50b8a0-63ce-43d9-aa5a-cffd946dc966)
+
+## Point Location in a Vertical Slab
+![image](https://github.com/user-attachments/assets/ffae0dee-b0ab-4668-98a2-ff44c4c70bfa)
+
 ## trapezoidal map
+
+###  Can we connect these triangles and trapezoids with a classic half-edge adjacency data structure?
+![image](https://github.com/user-attachments/assets/2f1cdcf5-a257-4146-8589-13b8dca6d17f)
+
+### Trapezoid Map Adjacency Structure
+![image](https://github.com/user-attachments/assets/90daaa7e-721c-4cda-af62-ab9ba87a6228)
+
+### Does this new adjacency structure allow us to navigate through the structure more efficiently, faster than a O(n) floodfill for the classic polygon adjacency structure?
+Unfortunately, no…  ● But we can build a binary tree (actually a DAG) for this structure to perform these queries!
+
+
+### Directed Acyclic Graph (DAG)
+![image](https://github.com/user-attachments/assets/53e62180-ae7b-4fdc-8516-e4aae50e2126)
+
+
+
 more general method of defining a subdivision of the plane into simple regions
 ![image](https://github.com/user-attachments/assets/4bc7518c-f858-4ad0-b4d0-e99f93474b29)
 
@@ -626,6 +649,7 @@ Use the orientation test (cross product) to determine:
 **（6.6）Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
+Binary search on y-values
 
 **（6.8）Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
