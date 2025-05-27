@@ -870,5 +870,6 @@ time.**
 # Reference
 https://www.cs.cmu.edu/afs/cs/academic/class/15456-f15/Handouts/cmsc754-lects.pdf
 
+https://www.cs.rpi.edu/~cutler/classes/computationalgeometry/S22/lectures
 
-
+https://github.com/morris821028/Computational-Geometry/tree/master/homework
