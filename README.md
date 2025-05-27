@@ -175,14 +175,21 @@ the first point p1 of the convex hull. Now imagine that we start with a
 vertical line and rotate it clockwise until it hits another point p2. This is
 the second point on the convex hull. We continue rotating the line but this
 time around p2 until we hit a point p3. In this way we continue until we
-reach p1 again.
-a. Give pseudocode for this algorithm.
-b. What degenerate cases can occur and how can we deal with them**
+reach p1 again.**
 
-check all the points about the angle with vertical line O(n*h) h is the num of the points
+**a. Give pseudocode for this algorithm.**
+This algorithm is a variant of Gift Wrapping starting from the rightmost point. The key idea is to iteratively rotate a line clockwise around the current convex hull vertex to find the next vertex。
 
-reach the left most,then is the upper,change the direction 
+Rotate this line until it hits another point p_2 such that the angle from p_1 to p_2 is the smallest clockwise.
 
+![image](https://github.com/user-attachments/assets/d073dfe1-3903-4d0c-afb6-a2a337dd6a11)
+
+**b. What degenerate cases can occur and how can we deal with them？**
+
+
+All Points Collinear
+
+Large Number of Points on the Hull。This creates high hull complexity h \approx n, leading to slow performance.
 
 ### 1.8 Design a divide-and-conquer algorithm for computing the convex hull of any given set of n points in the plane. Do not forget to analyze the running time of your algorithm
 
