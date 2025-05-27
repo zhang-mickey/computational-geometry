@@ -9,7 +9,12 @@
 **O(log2n + k) time**
 
 (c) Triangulating an x-monotone polygon with n vertices. 
+
 **O(n) time.**
+
+Splitting a simple polygon with n vertices into y-monotone sub polygons.
+
+To decompose a simple polygon with n vertices into y-monotone subpolygons in **O(nlogn) time**, we use a sweep line algorithm that systematically eliminates "non-monotonicities" by adding diagonals at critical vertices 
 
 (d) Given the Voronoi diagram of a set P of n points in R2, computing the convex hull of P.
 **O(n) time.**
@@ -658,6 +663,9 @@ A Voronoi diagram encodes proximity information, that is, what is close to what.
 Each Voronoi region V(pi) is convex. Could be  bounded or unbounded.
 
 A Voronoi vertex has at least three nearest  neighbors 
+
+![image](https://github.com/user-attachments/assets/d67b3c9d-5fbc-4f0a-8620-4806a2331d89)
+
 ## Computing the Voronoi Diagram
 plane sweep algorithm O(nlogn)
 
