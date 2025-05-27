@@ -650,17 +650,17 @@ Use the orientation test (cross product) to determine:
 **（6.6）Given a y-monotone polygon P as an array of its n vertices in sorted order along the boundary.
 Can you generalize the solution to the previous exercise to y-monotone polygons?**
 
-Binary search on y-values
+Sweep a horizontal line from top to bottom, partitioning the polygon into trapezoids whenever the sweep line encounters a vertex.
 
-Decompose the polygon into vertical trapezoids:
-	•	For each vertex v, shoot vertical lines up and down to the opposite polygon edge.
-	•	This creates vertical slabs (trapezoids), bounded by polygon edges on left and right.
-	2.	The trapezoids form a search structure (a trapezoidal map) that partitions the polygon.
-	3.	You can pre-process this trapezoidal map and store it in a search tree based on x-coordinates of the trapezoid boundaries.
-	4.	To answer a query q = (x, y):
-	•	Do binary search to find the trapezoid that contains x
-	•	Once the trapezoid is found, check if q lies between its top and bottom edges (usually linear or constant-time check)
+Each trapezoid is bounded by two non-horizontal edges (edges of P) and two horizontal segments
 
+The decomposition ensures that any vertical line intersects at most one trapezoid.
+
+Binary Search on y-Intervals :
+Find the trapezoid whose y-interval contains q's y-coordinate using binary search on the trapezoidal map.
+
+Check Inside Polygon :
+Determine if q lies within the trapezoid and also inside the original polygon P by checking its position relative to the bounding edges of the trapezoid.
 
 **（6.8）Design a deterministic algorithm, that is, one that does not make random choices, to compute the
 trapezoidal map of a set of non-crossing line segments. Use the plane sweep paradigm from Chapter 2. The worst-case
