@@ -763,7 +763,8 @@ of P that lie on the boundary of the convex hull of P in time linear in the
 output size. Assume that your algorithm receives as its input a pointer to
 the record of some half-edge whose origin lies on the bounding box.**
 
-**A cell of the Voronoi diagram is unbounded if and only if the corresponding site lies on the convex hull.** (Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
+A cell of the Voronoi diagram is unbounded if and only if the corresponding site lies on the convex hull.
+(Observe that a site is on the convex hull if and only if it is the closest point from some point at infinity.) Thus, given a Voronoi diagram, it is easy to extract the convex hull in linear time.
 
 Start at a half-edge e on the bounding box.
 
@@ -784,10 +785,15 @@ Each convex hull point's Voronoi cell touches the bounding box exactly once
 ## complexity of  Arrangement 
 ![image](https://github.com/user-attachments/assets/bb378528-b6c6-4fe1-ac83-89d84c7f24ab)
 
+### proof 
+![image](https://github.com/user-attachments/assets/91b937f3-8f86-4e69-909a-dbb4c58e248f)
+![image](https://github.com/user-attachments/assets/44bec3ab-711e-4273-9a30-578a6ff60f15)
+
 
 ### use Line Segment Intersection
 ![image](https://github.com/user-attachments/assets/49d0041d-0b03-46a6-b9da-315ff0f1b327)
 ![image](https://github.com/user-attachments/assets/f1fe8811-530c-4dd5-a49f-bade5fe01e69)
+![image](https://github.com/user-attachments/assets/3f6cf5f0-8abd-4111-b4a1-153453fab1e5)
 
 
 ## max level
@@ -806,7 +812,7 @@ k-level = Parts of the lines/curves with exactly k other lines above.
 **8.3Use Euler’s formula to show that the maximum number of faces is n2/2+n/2+1 in an arrangement
 with n(n − 1)/2 vertices and n2 edges.**
 
-
+ we must model the arrangement as a planar graph by adding a vertex at infinity to account for unbounded edges.
 
 
 **8.4Let L be a set of n lines in the plane. Give an O(n log n) time algorithm to compute an axis-parallel
@@ -879,3 +885,5 @@ https://www.cs.cmu.edu/afs/cs/academic/class/15456-f15/Handouts/cmsc754-lects.pd
 https://www.cs.rpi.edu/~cutler/classes/computationalgeometry/S22/lectures
 
 https://github.com/morris821028/Computational-Geometry/tree/master/homework
+
+https://homepages.math.uic.edu/~jan/mcs481/arrangements.pdf
